@@ -1,0 +1,46 @@
+{
+    "require": {
+        "php": "^7.3",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "guzzlehttp/guzzle": "^6.3",
+        "leafo/scssphp": "^0.7",
+        "myclabs/php-enum": "^1.7",
+        "php-di/php-di": "^6.0",
+        "symfony/event-dispatcher": "^4.3",
+        "symfony/http-foundation": "^4.3",
+        "symfony/http-kernel": "^4.3",
+        "symfony/translation": "^4.3",
+        "twig/twig": "^2.4",
+        "vlucas/phpdotenv": "^3.6"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "infection/infection": "^0.14.1",
+        "phploc/phploc": "^5.0",
+        "phpstan/phpstan": "^0.11.16",
+        "phpunit/phpunit": "^8.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sypa\\": "src/"
+        },
+        "classmap": [
+            "src/Legacy/"
+        ],
+        "files": [
+            "src/Legacy/system/helper/bbcode.php",
+            "src/Legacy/system/helper/db_schema.php",
+            "src/Legacy/system/helper/general.php",
+            "src/Legacy/system/helper/utf8.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sypa\\Test\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
