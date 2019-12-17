@@ -19,5 +19,6 @@
 !/var/log/.gitkeep
 !/var/test/.gitkeep
 !/var/tmp/.gitkeep
+.env
 .php_cs.cache
 .phpunit.result.cache
