@@ -75,7 +75,7 @@ class ModelLocalisationTaxClass extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $tax_class_data = $this->cache->get('tax_class');
 
             if (!$tax_class_data) {
@@ -87,7 +87,7 @@ class ModelLocalisationTaxClass extends Model {
             }
 
             return $tax_class_data;
-
+        }
     }
 
     public function getTotalTaxClasses() {

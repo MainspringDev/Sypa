@@ -88,7 +88,7 @@ class ModelLocalisationGeoZone extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $geo_zone_data = $this->cache->get('geo_zone');
 
             if (!$geo_zone_data) {
@@ -100,7 +100,7 @@ class ModelLocalisationGeoZone extends Model {
             }
 
             return $geo_zone_data;
-
+        }
     }
 
     public function getTotalGeoZones() {

@@ -75,7 +75,7 @@ class ModelLocalisationWeightClass extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $weight_class_data = $this->cache->get('weight_class.' . (int)$this->config->get('config_language_id'));
 
             if (!$weight_class_data) {
@@ -87,7 +87,7 @@ class ModelLocalisationWeightClass extends Model {
             }
 
             return $weight_class_data;
-
+        }
     }
 
     public function getWeightClass($weight_class_id) {

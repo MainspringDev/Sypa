@@ -44,9 +44,9 @@ class ModelSettingSetting extends Model {
 
         if ($query->num_rows) {
             return $query->row['value'];
-        }
+        } else {
             return null;
-
+        }
     }
 
     public function editSettingValue($code = '', $key = '', $value = '', $store_id = 0) {

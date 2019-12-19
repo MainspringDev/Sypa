@@ -70,7 +70,7 @@ class ModelLocalisationReturnAction extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $return_action_data = $this->cache->get('return_action.' . (int)$this->config->get('config_language_id'));
 
             if (!$return_action_data) {
@@ -82,7 +82,7 @@ class ModelLocalisationReturnAction extends Model {
             }
 
             return $return_action_data;
-
+        }
     }
 
     public function getReturnActionDescriptions($return_action_id) {

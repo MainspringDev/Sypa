@@ -34,9 +34,9 @@ class ModelToolBackup extends Model {
 
         if ($query->num_rows) {
             return $query->rows;
-        }
+        } else {
             return array();
-
+        }
     }
 
     public function getTotalRecords($table) {
@@ -44,8 +44,8 @@ class ModelToolBackup extends Model {
 
         if ($query->num_rows) {
             return $query->row['total'];
-        }
+        } else {
             return 0;
-
+        }
     }
 }

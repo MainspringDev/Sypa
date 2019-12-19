@@ -251,6 +251,8 @@ class ControllerDesignSeoUrl extends Controller {
         $data['add'] = $this->url->link('design/seo_url/add', 'user_token=' . $this->session->data['user_token'] . $url);
         $data['delete'] = $this->url->link('design/seo_url/delete', 'user_token=' . $this->session->data['user_token'] . $url);
 
+        $this->load->model('localisation/language');
+
         $data['seo_urls'] = array();
 
         $filter_data = array(
@@ -260,8 +262,8 @@ class ControllerDesignSeoUrl extends Controller {
             'filter_language_id' => $filter_language_id,
             'sort'               => $sort,
             'order'              => $order,
-            'start'              => ($page - 1) * $this->config->get('config_limit_admin'),
-            'limit'              => $this->config->get('config_limit_admin')
+            'start'              => ($page - 1) * $this->config->get('config_pagination'),
+            'limit'              => $this->config->get('config_pagination')
         );
 
         $seo_url_total = $this->model_design_seo_url->getTotalSeoUrls($filter_data);
@@ -269,12 +271,20 @@ class ControllerDesignSeoUrl extends Controller {
         $results = $this->model_design_seo_url->getSeoUrls($filter_data);
 
         foreach ($results as $result) {
+            $language_info = $this->model_localisation_language->getLanguage($result['language_id']);
+
+            if ($language_info) {
+                $code = $language_info['code'];
+            } else {
+                $code = '';
+            }
+
             $data['seo_urls'][] = array(
                 'seo_url_id' => $result['seo_url_id'],
                 'keyword'    => $result['keyword'],
                 'query'      => htmlspecialchars($result['query'], ENT_COMPAT, 'UTF-8'),
                 'store'      => $result['store_id'] ? $result['store'] : $this->language->get('text_default'),
-                'language'   => $result['language'],
+                'language'   => $code,
                 'edit'       => $this->url->link('design/seo_url/edit', 'user_token=' . $this->session->data['user_token'] . '&seo_url_id=' . $result['seo_url_id'] . $url)
             );
         }
@@ -359,11 +369,11 @@ class ControllerDesignSeoUrl extends Controller {
         $data['pagination'] = $this->load->controller('common/pagination', array(
             'total' => $seo_url_total,
             'page'  => $page,
-            'limit' => $this->config->get('config_limit_admin'),
+            'limit' => $this->config->get('config_pagination'),
             'url'   => $this->url->link('design/seo_url', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
         ));
 
-        $data['results'] = sprintf($this->language->get('text_pagination'), ($seo_url_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($seo_url_total - $this->config->get('config_limit_admin'))) ? $seo_url_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $seo_url_total, ceil($seo_url_total / $this->config->get('config_limit_admin')));
+        $data['results'] = sprintf($this->language->get('text_pagination'), ($seo_url_total) ? (($page - 1) * $this->config->get('config_pagination')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination')) > ($seo_url_total - $this->config->get('config_pagination'))) ? $seo_url_total : ((($page - 1) * $this->config->get('config_pagination')) + $this->config->get('config_pagination')), $seo_url_total, ceil($seo_url_total / $this->config->get('config_pagination')));
 
         $data['filter_keyword'] = $filter_keyword;
         $data['filter_query'] = $filter_query;
@@ -561,7 +571,9 @@ class ControllerDesignSeoUrl extends Controller {
             }
         }
 
-        if ($this->request->post['query']) {
+        if ((utf8_strlen(trim($this->request->post['query'])) < 3) || (utf8_strlen($this->request->post['query']) > 255)) {
+            $this->error['query'] = $this->language->get('error_query');
+        } else {
             $seo_urls = $this->model_design_seo_url->getSeoUrlsByQuery($this->request->post['query']);
 
             foreach ($seo_urls as $seo_url) {
@@ -574,8 +586,10 @@ class ControllerDesignSeoUrl extends Controller {
                     }
                 }
             }
-        } else {
-            $this->error['query'] = $this->language->get('error_query');
+        }
+
+        if (!$this->request->post['push']) {
+            $this->error['push'] = $this->language->get('error_push');
         }
 
         return !$this->error;

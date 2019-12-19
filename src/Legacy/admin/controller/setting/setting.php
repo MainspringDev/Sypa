@@ -427,10 +427,10 @@ class ControllerSettingSetting extends Controller {
 
         $data['weight_classes'] = $this->model_localisation_weight_class->getWeightClasses();
 
-        if (isset($this->request->post['config_limit_admin'])) {
-            $data['config_limit_admin'] = $this->request->post['config_limit_admin'];
+        if (isset($this->request->post['config_pagination'])) {
+            $data['config_pagination'] = $this->request->post['config_pagination'];
         } else {
-            $data['config_limit_admin'] = $this->config->get('config_limit_admin');
+            $data['config_pagination'] = $this->config->get('config_pagination');
         }
 
         if (isset($this->request->post['config_product_count'])) {
@@ -711,11 +711,11 @@ class ControllerSettingSetting extends Controller {
         $extensions = $this->model_setting_extension->getInstalled('captcha');
 
         foreach ($extensions as $code) {
-            $this->load->language('extension/captcha/' . $code, 'extension');
+            $this->load->language('extension/captcha/' . $code, $code);
 
             if ($this->config->get('captcha_' . $code . '_status')) {
                 $data['captchas'][] = array(
-                    'text'  => $this->language->get('extension')->get('heading_title'),
+                    'text'  => $this->language->get($code . '_heading_title'),
                     'value' => $code
                 );
             }
@@ -986,7 +986,7 @@ class ControllerSettingSetting extends Controller {
             $this->error['customer_group_display'] = $this->language->get('error_customer_group_display');
         }
 
-        if (!$this->request->post['config_limit_admin']) {
+        if (!$this->request->post['config_pagination']) {
             $this->error['limit_admin'] = $this->language->get('error_limit');
         }
 

@@ -77,8 +77,8 @@ class ControllerCustomerGdpr extends Controller {
             'filter_action'     => $filter_action,
             'filter_status'     => $filter_status,
             'filter_date_added' => $filter_date_added,
-            'start'             => ($page - 1) * $this->config->get('config_limit_admin'),
-            'limit'             => $this->config->get('config_limit_admin')
+            'start'             => ($page - 1) * $this->config->get('config_pagination'),
+            'limit'             => $this->config->get('config_pagination')
         );
 
         $this->load->model('customer/gdpr');
@@ -131,11 +131,11 @@ class ControllerCustomerGdpr extends Controller {
         $data['pagination'] = $this->load->controller('common/pagination', array(
             'total' => $gdpr_total,
             'page'  => $page,
-            'limit' => $this->config->get('config_limit_admin'),
+            'limit' => $this->config->get('config_pagination'),
             'url'   => $this->url->link('customer/gdpr/gdpr', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
         ));
 
-        $data['results'] = sprintf($this->language->get('text_pagination'), ($gdpr_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($gdpr_total - $this->config->get('config_limit_admin'))) ? $gdpr_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $gdpr_total, ceil($gdpr_total / $this->config->get('config_limit_admin')));
+        $data['results'] = sprintf($this->language->get('text_pagination'), ($gdpr_total) ? (($page - 1) * $this->config->get('config_pagination')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination')) > ($gdpr_total - $this->config->get('config_pagination'))) ? $gdpr_total : ((($page - 1) * $this->config->get('config_pagination')) + $this->config->get('config_pagination')), $gdpr_total, ceil($gdpr_total / $this->config->get('config_pagination')));
 
         $this->response->setOutput($this->load->view('customer/gdpr_list', $data));
     }
@@ -143,25 +143,25 @@ class ControllerCustomerGdpr extends Controller {
     /*
      *  Action Statuses
      *
-     *	EXPORT
+     *  EXPORT
      *
      *  unverified = 0
-     *	pending    = 1
-     *	complete   = 3
+     *  pending    = 1
+     *  complete   = 3
      *
-     *	REMOVE
-     *
-     *  unverified = 0
-     *	pending    = 1
-     *	processing = 2
-     *	delete     = 3
-     *
-     *	DENY
+     *  REMOVE
      *
      *  unverified = 0
-     *	pending    = 1
-     *	processing = 2
-     *	denied     = -1
+     *  pending    = 1
+     *  processing = 2
+     *  delete     = 3
+     *
+     *  DENY
+     *
+     *  unverified = 0
+     *  pending    = 1
+     *  processing = 2
+     *  denied     = -1
      */
     public function approve() {
         $this->load->language('customer/gdpr');

@@ -21,8 +21,8 @@ class ControllerExtensionExtensionPromotion extends Controller {
 
         if ($response) {
             return $response;
-        }
+        } else {
             return '';
-
+        }
     }
 }

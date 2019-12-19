@@ -25,7 +25,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
       <th>Value</th>
     </tr>
   </thead>
-	<?php
+    <?php
 
     if (!empty($_POST)) {
         foreach ($_POST as $key => $value) {
@@ -43,7 +43,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
               <pre class="samples"><?php echo $value; ?></pre>
             </td>
           </tr>
-			<?php
+            <?php
         }
     }
     ?>

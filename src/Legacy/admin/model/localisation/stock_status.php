@@ -70,7 +70,7 @@ class ModelLocalisationStockStatus extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $stock_status_data = $this->cache->get('stock_status.' . (int)$this->config->get('config_language_id'));
 
             if (!$stock_status_data) {
@@ -82,7 +82,7 @@ class ModelLocalisationStockStatus extends Model {
             }
 
             return $stock_status_data;
-
+        }
     }
 
     public function getStockStatusDescriptions($stock_status_id) {

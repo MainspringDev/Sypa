@@ -376,9 +376,9 @@ class ControllerToolBackup extends Controller {
             readfile($file, 'rb');
 
             exit();
-        }
+        } else {
             exit('Error: Headers already sent out!');
-
+        }
     }
 
     public function delete() {

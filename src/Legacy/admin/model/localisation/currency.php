@@ -83,7 +83,7 @@ class ModelLocalisationCurrency extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $currency_data = $this->cache->get('currency');
 
             if (!$currency_data) {
@@ -109,7 +109,7 @@ class ModelLocalisationCurrency extends Model {
             }
 
             return $currency_data;
-
+        }
     }
 
     public function getTotalCurrencies() {

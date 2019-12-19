@@ -87,8 +87,8 @@ class ControllerCommonPagination extends Controller {
 
         if ($num_pages > 1) {
             return $this->load->view('common/pagination', $data);
-        }
+        } else {
             return '';
-
+        }
     }
 }

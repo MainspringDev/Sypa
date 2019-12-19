@@ -275,7 +275,7 @@ class ModelLocalisationLanguage extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $language_data = $this->cache->get('admin.language');
 
             if (!$language_data) {
@@ -299,7 +299,7 @@ class ModelLocalisationLanguage extends Model {
             }
 
             return $language_data;
-
+        }
     }
 
     public function getLanguageByCode($code) {

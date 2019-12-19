@@ -134,7 +134,7 @@ class ModelCatalogInformation extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $information_data = $this->cache->get('information.' . (int)$this->config->get('config_language_id'));
 
             if (!$information_data) {
@@ -146,7 +146,7 @@ class ModelCatalogInformation extends Model {
             }
 
             return $information_data;
-
+        }
     }
 
     public function getInformationDescriptions($information_id) {

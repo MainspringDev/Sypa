@@ -70,7 +70,7 @@ class ModelLocalisationReturnStatus extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $return_status_data = $this->cache->get('return_status.' . (int)$this->config->get('config_language_id'));
 
             if (!$return_status_data) {
@@ -82,7 +82,7 @@ class ModelLocalisationReturnStatus extends Model {
             }
 
             return $return_status_data;
-
+        }
     }
 
     public function getReturnStatusDescriptions($return_status_id) {

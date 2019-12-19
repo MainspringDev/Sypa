@@ -7,30 +7,30 @@ use OpenCart\System\Engine\Model;
 class ModelExtensionPaymentG2apay extends Model {
     public function install() {
         $this->db->query("
-			CREATE TABLE `" . DB_PREFIX . "g2apay_order` (
-				`g2apay_order_id` INT(11) NOT NULL AUTO_INCREMENT,
-				`order_id` int(11) NOT NULL,
-				`g2apay_transaction_id` varchar(255) NOT NULL,
-				`date_added` DATETIME NOT NULL,
-				`modified` DATETIME NOT NULL,
-				`refund_status` INT(1) DEFAULT NULL,
-				`currency_code` CHAR(3) NOT NULL,
-				`total` DECIMAL( 10, 2 ) NOT NULL,
-				KEY `g2apay_transaction_id` (`g2apay_transaction_id`),
-				PRIMARY KEY `g2apay_order_id` (`g2apay_order_id`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-		");
+            CREATE TABLE `" . DB_PREFIX . "g2apay_order` (
+                `g2apay_order_id` INT(11) NOT NULL AUTO_INCREMENT,
+                `order_id` int(11) NOT NULL,
+                `g2apay_transaction_id` varchar(255) NOT NULL,
+                `date_added` DATETIME NOT NULL,
+                `modified` DATETIME NOT NULL,
+                `refund_status` INT(1) DEFAULT NULL,
+                `currency_code` CHAR(3) NOT NULL,
+                `total` DECIMAL( 10, 2 ) NOT NULL,
+                KEY `g2apay_transaction_id` (`g2apay_transaction_id`),
+                PRIMARY KEY `g2apay_order_id` (`g2apay_order_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+        ");
 
         $this->db->query("
-			CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "g2apay_order_transaction` (
-			  `g2apay_order_transaction_id` INT(11) NOT NULL AUTO_INCREMENT,
-			  `g2apay_order_id` INT(11) NOT NULL,
-			  `date_added` DATETIME NOT NULL,
-			  `type` ENUM('payment', 'refund') DEFAULT NULL,
-			  `amount` DECIMAL( 10, 2 ) NOT NULL,
-			  PRIMARY KEY (`g2apay_order_transaction_id`)
-			) ENGINE=MyISAM DEFAULT COLLATE=utf8_general_ci;
-			");
+            CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "g2apay_order_transaction` (
+              `g2apay_order_transaction_id` INT(11) NOT NULL AUTO_INCREMENT,
+              `g2apay_order_id` INT(11) NOT NULL,
+              `date_added` DATETIME NOT NULL,
+              `type` ENUM('payment', 'refund') DEFAULT NULL,
+              `amount` DECIMAL( 10, 2 ) NOT NULL,
+              PRIMARY KEY (`g2apay_order_transaction_id`)
+            ) ENGINE=MyISAM DEFAULT COLLATE=utf8_general_ci;
+            ");
     }
 
     public function uninstall() {

@@ -207,13 +207,13 @@ class ModelExtensionPaymentKlarnaCheckout extends Model {
 
     public function install() {
         $this->db->query("
-			CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "klarna_checkout_order` (
-			  `klarna_checkout_order_id` INT(11) NOT NULL AUTO_INCREMENT,
-			  `order_id` INT(11) NOT NULL,
-			  `order_ref` VARCHAR(255) NOT NULL,
-			  `data` text NOT NULL,
-			  PRIMARY KEY (`klarna_checkout_order_id`)
-			) ENGINE=MyISAM DEFAULT COLLATE=utf8_general_ci;");
+            CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "klarna_checkout_order` (
+              `klarna_checkout_order_id` INT(11) NOT NULL AUTO_INCREMENT,
+              `order_id` INT(11) NOT NULL,
+              `order_ref` VARCHAR(255) NOT NULL,
+              `data` text NOT NULL,
+              PRIMARY KEY (`klarna_checkout_order_id`)
+            ) ENGINE=MyISAM DEFAULT COLLATE=utf8_general_ci;");
 
         $this->load->model('setting/event');
         $this->model_setting_event->addEvent('extension_klarna_checkout_js', 'catalog/controller/checkout/checkout/before', 'extension/payment/klarna_checkout/eventLoadCheckoutJs');

@@ -94,7 +94,7 @@ class ControllerExtensionExtensionPayment extends Controller {
 
                 $text_link = $this->language->get($extension . '_text_' . $extension);
 
-                if ($text_link != 'text_' . $extension) {
+                if ($text_link != $extension . '_text_' . $extension) {
                     $link = $text_link;
                 } else {
                     $link = '';

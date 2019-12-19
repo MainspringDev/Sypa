@@ -7,20 +7,20 @@ use OpenCart\System\Engine\Model;
 class ModelExtensionFeedGoogleBase extends Model {
     public function install() {
         $this->db->query("
-			CREATE TABLE `" . DB_PREFIX . "google_base_category` (
-				`google_base_category_id` INT(11) NOT NULL AUTO_INCREMENT,
-				`name` varchar(255) NOT NULL,
-				PRIMARY KEY (`google_base_category_id`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-		");
+            CREATE TABLE `" . DB_PREFIX . "google_base_category` (
+                `google_base_category_id` INT(11) NOT NULL AUTO_INCREMENT,
+                `name` varchar(255) NOT NULL,
+                PRIMARY KEY (`google_base_category_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+        ");
 
         $this->db->query("
-			CREATE TABLE `" . DB_PREFIX . "google_base_category_to_category` (
-				`google_base_category_id` INT(11) NOT NULL,
-				`category_id` INT(11) NOT NULL,
-				PRIMARY KEY (`google_base_category_id`, `category_id`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-		");
+            CREATE TABLE `" . DB_PREFIX . "google_base_category_to_category` (
+                `google_base_category_id` INT(11) NOT NULL,
+                `category_id` INT(11) NOT NULL,
+                PRIMARY KEY (`google_base_category_id`, `category_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+        ");
     }
 
     public function uninstall() {

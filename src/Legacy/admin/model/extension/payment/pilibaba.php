@@ -7,14 +7,14 @@ use OpenCart\System\Engine\Model;
 class ModelExtensionPaymentPilibaba extends Model {
     public function install() {
         $this->db->query("CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "pilibaba_order` (
-			`pilibaba_order_id` int(11) NOT NULL AUTO_INCREMENT,
-			`order_id` int(11) NOT NULL DEFAULT '0',
-			`amount` double NOT NULL,
-			`fee` double NOT NULL,
-			`tracking` VARCHAR(50) NOT NULL DEFAULT '',
-			`date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-			PRIMARY KEY (`pilibaba_order_id`)
-		) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci");
+            `pilibaba_order_id` int(11) NOT NULL AUTO_INCREMENT,
+            `order_id` int(11) NOT NULL DEFAULT '0',
+            `amount` double NOT NULL,
+            `fee` double NOT NULL,
+            `tracking` VARCHAR(50) NOT NULL DEFAULT '',
+            `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+            PRIMARY KEY (`pilibaba_order_id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci");
     }
 
     public function uninstall() {

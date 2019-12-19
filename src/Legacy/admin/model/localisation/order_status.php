@@ -70,7 +70,7 @@ class ModelLocalisationOrderStatus extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $order_status_data = $this->cache->get('order_status.' . (int)$this->config->get('config_language_id'));
 
             if (!$order_status_data) {
@@ -82,7 +82,7 @@ class ModelLocalisationOrderStatus extends Model {
             }
 
             return $order_status_data;
-
+        }
     }
 
     public function getOrderStatusDescriptions($order_status_id) {

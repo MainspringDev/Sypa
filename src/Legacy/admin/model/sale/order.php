@@ -147,9 +147,9 @@ class ModelSaleOrder extends Model {
                 'date_added'              => $order_query->row['date_added'],
                 'date_modified'           => $order_query->row['date_modified']
             );
-        }
+        } else {
             return;
-
+        }
     }
 
     public function getOrders($data = array()) {
@@ -332,9 +332,9 @@ class ModelSaleOrder extends Model {
             $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order` WHERE " . implode(" OR ", $implode));
 
             return $query->row['total'];
-        }
+        } else {
             return 0;
-
+        }
     }
 
     public function getTotalOrdersByCompleteStatus() {
@@ -350,9 +350,9 @@ class ModelSaleOrder extends Model {
             $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order` WHERE " . implode(" OR ", $implode) . "");
 
             return $query->row['total'];
-        }
+        } else {
             return 0;
-
+        }
     }
 
     public function getTotalOrdersByLanguageId($language_id) {
@@ -393,7 +393,7 @@ class ModelSaleOrder extends Model {
         }
 
         if (!empty($data['filter_customer'])) {
-            $sql .= " AND CONCAT(firstname, ' ', o.lastname) LIKE '%" . $this->db->escape((string)$data['filter_customer']) . "%'";
+            $sql .= " AND CONCAT(firstname, ' ', lastname) LIKE '%" . $this->db->escape((string)$data['filter_customer']) . "%'";
         }
 
         if (!empty($data['filter_date_added'])) {

@@ -68,7 +68,7 @@ class ModelLocalisationCountry extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $country_data = $this->cache->get('country.admin');
 
             if (!$country_data) {
@@ -80,7 +80,7 @@ class ModelLocalisationCountry extends Model {
             }
 
             return $country_data;
-
+        }
     }
 
     public function getTotalCountries() {

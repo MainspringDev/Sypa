@@ -69,7 +69,7 @@ class ModelSaleVoucherTheme extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $voucher_theme_data = $this->cache->get('voucher_theme.' . (int)$this->config->get('config_language_id'));
 
             if (!$voucher_theme_data) {
@@ -81,7 +81,7 @@ class ModelSaleVoucherTheme extends Model {
             }
 
             return $voucher_theme_data;
-
+        }
     }
 
     public function getVoucherThemeDescriptions($voucher_theme_id) {

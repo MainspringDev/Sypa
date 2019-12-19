@@ -75,7 +75,7 @@ class ModelLocalisationLengthClass extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $length_class_data = $this->cache->get('length_class.' . (int)$this->config->get('config_language_id'));
 
             if (!$length_class_data) {
@@ -87,7 +87,7 @@ class ModelLocalisationLengthClass extends Model {
             }
 
             return $length_class_data;
-
+        }
     }
 
     public function getLengthClass($length_class_id) {
