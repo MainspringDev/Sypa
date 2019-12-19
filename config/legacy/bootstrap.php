@@ -2,13 +2,13 @@
 
 use DI\ContainerBuilder;
 use OpenCart\System\Engine\Action;
-use OpenCart\System\Library\DB;
 use OpenCart\System\Engine\Event;
 use OpenCart\System\Engine\Loader;
 use OpenCart\System\Engine\Registry;
 use OpenCart\System\Engine\Router;
 use OpenCart\System\Library\Cache;
 use OpenCart\System\Library\Config;
+use OpenCart\System\Library\DB;
 use OpenCart\System\Library\Document;
 use OpenCart\System\Library\Language;
 use OpenCart\System\Library\Log;
