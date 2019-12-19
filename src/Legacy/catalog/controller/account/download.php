@@ -45,7 +45,7 @@ class ControllerAccountDownload extends Controller {
 
         $download_total = $this->model_account_download->getTotalDownloads();
 
-        $results = $this->model_account_download->getDownloads(($page - 1) * $this->config->get('theme_' . $this->config->get('config_theme') . '_product_limit'), $this->config->get('theme_' . $this->config->get('config_theme') . '_product_limit'));
+		$results = $this->model_account_download->getDownloads(($page - 1) * $this->config->get('theme_' . $this->config->get('config_theme') . '_pagination'), $this->config->get('theme_' . $this->config->get('config_theme') . '_pagination'));
 
         foreach ($results as $result) {
             if (is_file(DIR_DOWNLOAD . $result['filename'])) {
@@ -83,7 +83,7 @@ class ControllerAccountDownload extends Controller {
         $data['pagination'] = $this->load->controller('common/pagination', array(
             'total' => $download_total,
             'page'  => $page,
-            'limit' => $this->config->get('theme_' . $this->config->get('config_theme') . '_product_limit'),
+			'limit' => $this->config->get('theme_' . $this->config->get('config_theme') . '_pagination'),
             'url'   => $this->url->link('account/download', 'language=' . $this->config->get('config_language') . '&page={page}')
         ));
 
@@ -140,14 +140,14 @@ class ControllerAccountDownload extends Controller {
                     $this->model_account_download->addDownloadReport($download_id, $this->request->server['REMOTE_ADDR']);
 
                     exit();
-                }
+                } else {
                     exit('Error: Could not find file ' . $file . '!');
-
-            }
+                }
+            } else {
                 exit('Error: Headers already sent out!');
-
-        }
+            }
+        } else {
             $this->response->redirect($this->url->link('account/download', 'language=' . $this->config->get('config_language')));
-
+        }
     }
 }

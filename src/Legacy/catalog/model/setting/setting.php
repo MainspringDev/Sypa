@@ -26,8 +26,8 @@ class ModelSettingSetting extends Model {
 
         if ($query->num_rows) {
             return $query->row['value'];
-        }
+        } else {
             return null;
-
+        }
     }
 }

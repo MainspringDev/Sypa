@@ -16,9 +16,9 @@ class ModelReportStatistics extends Model {
 
         if ($query->num_rows) {
             return $query->row['value'];
-        }
+        } else {
             return null;
-
+        }
     }
 
     public function addValue($code, $value) {

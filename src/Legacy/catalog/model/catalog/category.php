@@ -61,9 +61,9 @@ class ModelCatalogCategory extends Model {
 
         if ($query->num_rows) {
             return (int)$query->row['layout_id'];
-        }
+        } else {
             return 0;
-
+        }
     }
 
     public function getTotalCategoriesByCategoryId($parent_id = 0) {

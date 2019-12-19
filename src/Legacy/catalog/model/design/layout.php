@@ -10,9 +10,9 @@ class ModelDesignLayout extends Model {
 
         if ($query->num_rows) {
             return (int)$query->row['layout_id'];
-        }
+        } else {
             return 0;
-
+        }
     }
 
     public function getLayoutModules($layout_id, $position) {

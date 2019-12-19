@@ -32,7 +32,7 @@ class ModelLocalisationReturnReason extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $return_reason_data = $this->cache->get('return_reason.' . (int)$this->config->get('config_language_id'));
 
             if (!$return_reason_data) {
@@ -44,6 +44,6 @@ class ModelLocalisationReturnReason extends Model {
             }
 
             return $return_reason_data;
-
+        }
     }
 }

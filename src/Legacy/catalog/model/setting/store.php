@@ -5,7 +5,7 @@ namespace OpenCart\Catalog\Model\Setting;
 use OpenCart\System\Engine\Model;
 
 class ModelSettingStore extends Model {
-    public function getStores($data = array()) {
+    public function getStores() {
         $store_data = $this->cache->get('store');
 
         if (!$store_data) {

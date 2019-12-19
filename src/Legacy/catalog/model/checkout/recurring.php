@@ -40,8 +40,8 @@ class ModelCheckoutRecurring extends Model {
 
         if ($this->db->countAffected() > 0) {
             return true;
-        }
+        } else {
             return false;
-
+        }
     }
 }

@@ -54,8 +54,8 @@ class ModelAccountTransaction extends Model {
 
         if ($query->num_rows) {
             return $query->row['total'];
+        } else {
+            return 0;
         }
-
-        return 0;
     }
 }

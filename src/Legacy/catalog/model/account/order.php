@@ -100,9 +100,9 @@ class ModelAccountOrder extends Model {
                 'date_added'              => $order_query->row['date_added'],
                 'ip'                      => $order_query->row['ip']
             );
-        }
+        } else {
             return false;
-
+        }
     }
 
     public function getOrders($start = 0, $limit = 20) {

@@ -47,7 +47,7 @@ class ModelCatalogManufacturer extends Model {
             $query = $this->db->query($sql);
 
             return $query->rows;
-        }
+        } else {
             $manufacturer_data = $this->cache->get('manufacturer.' . (int)$this->config->get('config_store_id'));
 
             if (!$manufacturer_data) {
@@ -59,6 +59,6 @@ class ModelCatalogManufacturer extends Model {
             }
 
             return $manufacturer_data;
-
+        }
     }
 }

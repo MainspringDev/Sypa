@@ -59,9 +59,9 @@ class ModelCatalogProduct extends Model {
                 'date_modified'    => $query->row['date_modified'],
                 'viewed'           => $query->row['viewed']
             );
-        }
+        } else {
             return false;
-
+        }
     }
 
     public function getProducts($data = array()) {
@@ -413,9 +413,9 @@ class ModelCatalogProduct extends Model {
 
         if ($query->num_rows) {
             return (int)$query->row['layout_id'];
-        }
+        } else {
             return 0;
-
+        }
     }
 
     public function getCategories($product_id) {
@@ -543,8 +543,8 @@ class ModelCatalogProduct extends Model {
 
         if (isset($query->row['total'])) {
             return $query->row['total'];
-        }
+        } else {
             return 0;
-
+        }
     }
 }
