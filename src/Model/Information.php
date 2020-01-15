@@ -8,39 +8,39 @@ class Information {
     /**
      * @var int
      */
-    private $information_id;
+    private int $information_id;
     /**
      * @var int
      */
-    private $bottom;
+    private int $bottom;
     /**
      * @var int
      */
-    private $sort_order;
+    private int $sort_order;
     /**
      * @var bool
      */
-    private $status;
+    private bool $status;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_added;
+    private \DateTimeImmutable $date_added;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_modified;
+    private \DateTimeImmutable $date_modified;
     /**
      * @var bool
      */
-    private $display;
+    private bool $display;
 
     /**
      * @param int $information_id
      * @param int $bottom
      * @param int $sort_order
      * @param bool $status
-     * @param \DateTimeInterface $date_added
-     * @param \DateTimeInterface $date_modified
+     * @param \DateTimeImmutable $date_added
+     * @param \DateTimeImmutable $date_modified
      * @param bool $display
      */
     public function __construct(
@@ -48,8 +48,8 @@ class Information {
         int $bottom,
         int $sort_order,
         bool $status,
-        \DateTimeInterface $date_added,
-        \DateTimeInterface $date_modified,
+        \DateTimeImmutable $date_added,
+        \DateTimeImmutable $date_modified,
         bool $display
     ) {
         $this->information_id = $information_id;
@@ -83,16 +83,16 @@ class Information {
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateAdded(): \DateTimeInterface {
+    public function getDateAdded(): \DateTimeImmutable {
         return $this->date_added;
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateModified(): \DateTimeInterface {
+    public function getDateModified(): \DateTimeImmutable {
         return $this->date_modified;
     }
 

@@ -8,255 +8,255 @@ class Order {
     /**
      * @var int
      */
-    private $order_id;
+    private int $order_id;
     /**
      * @var int
      */
-    private $invoice_number;
+    private int $invoice_number;
     /**
      * @var string
      */
-    private $invoice_prefix;
+    private string $invoice_prefix;
     /**
      * @var int
      */
-    private $store_id;
+    private int $store_id;
     /**
      * @var string
      */
-    private $store_name;
+    private string $store_name;
     /**
      * @var string
      */
-    private $store_url;
+    private string $store_url;
     /**
      * @var int
      */
-    private $customer_id;
+    private int $customer_id;
     /**
      * @var int
      */
-    private $customer_group_id;
+    private int $customer_group_id;
     /**
      * @var string
      */
-    private $first_name;
+    private string $first_name;
     /**
      * @var string
      */
-    private $last_name;
+    private string $last_name;
     /**
      * @var string
      */
-    private $email;
+    private string $email;
     /**
      * @var string
      */
-    private $telephone;
+    private string $telephone;
     /**
      * @var string
      */
-    private $fax;
+    private string $fax;
     /**
      * @var string
      */
-    private $custom_field;
+    private string $custom_field;
     /**
      * @var string
      */
-    private $payment_first_name;
+    private string $payment_first_name;
     /**
      * @var string
      */
-    private $payment_last_name;
+    private string $payment_last_name;
     /**
      * @var string
      */
-    private $payment_organization;
+    private string $payment_organization;
     /**
      * @var string
      */
-    private $payment_street_1;
+    private string $payment_street_1;
     /**
      * @var string
      */
-    private $payment_street_2;
+    private string $payment_street_2;
     /**
      * @var string
      */
-    private $payment_city;
+    private string $payment_city;
     /**
      * @var string
      */
-    private $payment_postcode;
+    private string $payment_postcode;
     /**
      * @var string
      */
-    private $payment_country;
+    private string $payment_country;
     /**
      * @var string
      */
-    private $payment_country_code;
+    private string $payment_country_code;
     /**
      * @var string
      */
-    private $payment_zone;
+    private string $payment_zone;
     /**
      * @var int
      */
-    private $payment_zone_id;
+    private int $payment_zone_id;
     /**
      * @var string
      */
-    private $payment_address_format;
+    private string $payment_address_format;
     /**
      * @var string
      */
-    private $payment_custom_field;
+    private string $payment_custom_field;
     /**
      * @var string
      */
-    private $payment_method;
+    private string $payment_method;
     /**
      * @var string
      */
-    private $payment_code;
+    private string $payment_code;
     /**
      * @var string
      */
-    private $shipping_first_name;
+    private string $shipping_first_name;
     /**
      * @var string
      */
-    private $shipping_last_name;
+    private string $shipping_last_name;
     /**
      * @var string
      */
-    private $shipping_organization;
+    private string $shipping_organization;
     /**
      * @var string
      */
-    private $shipping_street_1;
+    private string $shipping_street_1;
     /**
      * @var string
      */
-    private $shipping_street_2;
+    private string $shipping_street_2;
     /**
      * @var string
      */
-    private $shipping_city;
+    private string $shipping_city;
     /**
      * @var string
      */
-    private $shipping_postcode;
+    private string $shipping_postcode;
     /**
      * @var string
      */
-    private $shipping_country;
+    private string $shipping_country;
     /**
      * @var string
      */
-    private $shipping_country_code;
+    private string $shipping_country_code;
     /**
      * @var string
      */
-    private $shipping_zone;
+    private string $shipping_zone;
     /**
      * @var int
      */
-    private $shipping_zone_id;
+    private int $shipping_zone_id;
     /**
      * @var string
      */
-    private $shipping_address_format;
+    private string $shipping_address_format;
     /**
      * @var string
      */
-    private $shipping_custom_field;
+    private string $shipping_custom_field;
     /**
      * @var string
      */
-    private $shipping_method;
+    private string $shipping_method;
     /**
      * @var string
      */
-    private $shipping_code;
+    private string $shipping_code;
     /**
      * @var string
      */
-    private $comment;
+    private string $comment;
     /**
      * @var float
      */
-    private $total;
+    private float $total;
     /**
      * @var int
      */
-    private $order_status_id;
+    private int $order_status_id;
     /**
      * @var int
      */
-    private $affiliate_id;
+    private int $affiliate_id;
     /**
      * @var float
      */
-    private $commission;
+    private float $commission;
     /**
      * @var int
      */
-    private $marketing_id;
+    private int $marketing_id;
     /**
      * @var string
      */
-    private $tracking;
+    private string $tracking;
     /**
      * @var int
      */
-    private $language_id;
+    private int $language_id;
     /**
      * @var int
      */
-    private $currency_id;
+    private int $currency_id;
     /**
      * @var string
      */
-    private $currency_code;
+    private string $currency_code;
     /**
      * @var float
      */
-    private $currency_value;
+    private float $currency_value;
     /**
      * @var string
      */
-    private $ip;
+    private string $ip;
     /**
      * @var string
      */
-    private $forwarded_ip;
+    private string $forwarded_ip;
     /**
      * @var string
      */
-    private $user_agent;
+    private string $user_agent;
     /**
      * @var string
      */
-    private $accept_language;
+    private string $accept_language;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_added;
+    private \DateTimeImmutable $date_added;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_modified;
+    private \DateTimeImmutable $date_modified;
     /**
      * @var string
      */
-    private $tax_id;
+    private string $tax_id;
     /**
      * @var int
      */
-    private $reward;
+    private int $reward;
 
     /**
      * @param int $order_id
@@ -318,8 +318,8 @@ class Order {
      * @param string $forwarded_ip
      * @param string $user_agent
      * @param string $accept_language
-     * @param \DateTimeInterface $date_added
-     * @param \DateTimeInterface $date_modified
+     * @param \DateTimeImmutable $date_added
+     * @param \DateTimeImmutable $date_modified
      * @param string $tax_id
      * @param int $reward
      */
@@ -383,8 +383,8 @@ class Order {
         string $forwarded_ip,
         string $user_agent,
         string $accept_language,
-        \DateTimeInterface $date_added,
-        \DateTimeInterface $date_modified,
+        \DateTimeImmutable $date_added,
+        \DateTimeImmutable $date_modified,
         string $tax_id,
         int $reward
     ) {
@@ -867,16 +867,16 @@ class Order {
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateAdded(): \DateTimeInterface {
+    public function getDateAdded(): \DateTimeImmutable {
         return $this->date_added;
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateModified(): \DateTimeInterface {
+    public function getDateModified(): \DateTimeImmutable {
         return $this->date_modified;
     }
 

@@ -10,15 +10,15 @@ class CustomerAddress {
     /**
      * @var int
      */
-    private $customer_id;
+    private int $customer_id;
     /**
      * @var int
      */
-    private $address_id;
+    private int $address_id;
     /**
      * @var bool
      */
-    private $default;
+    private bool $default;
 
     /**
      * @param int $customer_id

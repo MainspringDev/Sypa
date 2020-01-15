@@ -8,127 +8,127 @@ class Product {
     /**
      * @var int
      */
-    private $product_id;
+    private int $product_id;
     /**
      * @var string
      */
-    private $sku;
+    private string $sku;
     /**
      * @var string
      */
-    private $upc;
+    private string $upc;
     /**
      * @var string
      */
-    private $ean;
+    private string $ean;
     /**
      * @var string
      */
-    private $jan;
+    private string $jan;
     /**
      * @var string
      */
-    private $isbn;
+    private string $isbn;
     /**
      * @var string
      */
-    private $mpn;
+    private string $mpn;
     /**
      * @var string
      */
-    private $location;
+    private string $location;
     /**
      * @var int
      */
-    private $quantity;
+    private int $quantity;
     /**
      * @var int
      */
-    private $minimum;
+    private int $minimum;
     /**
      * @var bool
      */
-    private $subtract;
+    private bool $subtract;
     /**
      * @var int
      */
-    private $stock_status_id;
+    private int $stock_status_id;
     /**
      * @var string
      */
-    private $image;
+    private string $image;
     /**
      * @var int
      */
-    private $manufacturer_id;
+    private int $manufacturer_id;
     /**
      * @var bool
      */
-    private $shipping;
+    private bool $shipping;
     /**
      * @var float
      */
-    private $price;
+    private float $price;
     /**
      * @var float
      */
-    private $cost;
+    private float $cost;
     /**
      * @var int
      */
-    private $points;
+    private int $points;
     /**
      * @var int
      */
-    private $tax_class_id;
+    private int $tax_class_id;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_available;
+    private \DateTimeImmutable $date_available;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_added;
+    private \DateTimeImmutable $date_added;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_modified;
+    private \DateTimeImmutable $date_modified;
     /**
      * @var float
      */
-    private $weight;
+    private float $weight;
     /**
      * @var int
      */
-    private $weight_class_id;
+    private int $weight_class_id;
     /**
      * @var float
      */
-    private $length;
+    private float $length;
     /**
      * @var float
      */
-    private $width;
+    private float $width;
     /**
      * @var float
      */
-    private $height;
+    private float $height;
     /**
      * @var int
      */
-    private $length_class_id;
+    private int $length_class_id;
     /**
      * @var int
      */
-    private $sort_order;
+    private int $sort_order;
     /**
      * @var bool
      */
-    private $status;
+    private bool $status;
     /**
      * @var int
      */
-    private $viewed;
+    private int $viewed;
 
     /**
      * @param int $product_id
@@ -150,9 +150,9 @@ class Product {
      * @param float $cost
      * @param int $points
      * @param int $tax_class_id
-     * @param \DateTimeInterface $date_available
-     * @param \DateTimeInterface $date_added
-     * @param \DateTimeInterface $date_modified
+     * @param \DateTimeImmutable $date_available
+     * @param \DateTimeImmutable $date_added
+     * @param \DateTimeImmutable $date_modified
      * @param float $weight
      * @param int $weight_class_id
      * @param float $length
@@ -183,9 +183,9 @@ class Product {
         float $cost,
         int $points,
         int $tax_class_id,
-        \DateTimeInterface $date_available,
-        \DateTimeInterface $date_added,
-        \DateTimeInterface $date_modified,
+        \DateTimeImmutable $date_available,
+        \DateTimeImmutable $date_added,
+        \DateTimeImmutable $date_modified,
         float $weight,
         int $weight_class_id,
         float $length,
@@ -363,23 +363,23 @@ class Product {
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateAvailable(): \DateTimeInterface {
+    public function getDateAvailable(): \DateTimeImmutable {
         return $this->date_available;
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateAdded(): \DateTimeInterface {
+    public function getDateAdded(): \DateTimeImmutable {
         return $this->date_added;
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateModified(): \DateTimeInterface {
+    public function getDateModified(): \DateTimeImmutable {
         return $this->date_modified;
     }
 

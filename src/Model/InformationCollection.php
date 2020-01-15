@@ -8,7 +8,7 @@ class InformationCollection implements \Iterator, \Countable {
     /**
      * @var Information[]
      */
-    private $informations = [];
+    private array $informations = [];
 
     public function addInformation(Information $information): void {
         $this->informations[] = $information;

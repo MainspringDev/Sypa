@@ -8,7 +8,7 @@ class TaxRateCollection implements \Iterator, \Countable {
     /**
      * @var TaxRate[]
      */
-    private $tax_rates = [];
+    private array $tax_rates = [];
 
     public function addTaxRate(TaxRate $taxRate): void {
         $this->tax_rates[$taxRate->getId()] = $taxRate;

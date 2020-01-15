@@ -8,7 +8,7 @@ class OrderCollection implements \Iterator, \Countable {
     /**
      * @var Order[]
      */
-    private $orders = [];
+    private array $orders = [];
 
     public function addOrder(Order $order): void {
         $this->orders[] = $order;

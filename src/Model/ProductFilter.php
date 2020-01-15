@@ -8,9 +8,9 @@ class ProductFilter {
     /**
      * @var int
      */
-    private $product_id;
+    private int $product_id;
     /**
      * @var int
      */
-    private $filter_id;
+    private int $filter_id;
 }

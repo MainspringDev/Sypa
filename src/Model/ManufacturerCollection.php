@@ -8,7 +8,7 @@ class ManufacturerCollection implements \Iterator, \Countable {
     /**
      * @var Manufacturer[]
      */
-    private $manufacturers = [];
+    private array $manufacturers = [];
 
     public function addManufacturer(Manufacturer $manufacturer): void {
         $this->manufacturers[] = $manufacturer;

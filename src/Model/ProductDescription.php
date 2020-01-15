@@ -8,37 +8,42 @@ class ProductDescription {
     /**
      * @var int
      */
-    private $product_id;
+    private int $product_description_id;
     /**
      * @var int
      */
-    private $language_id;
+    private int $product_id;
+    /**
+     * @var int
+     */
+    private int $language_id;
     /**
      * @var string
      */
-    private $name;
+    private string $name;
     /**
      * @var string
      */
-    private $description;
+    private string $description;
     /**
      * @var string
      */
-    private $tag;
+    private string $tag;
     /**
      * @var string
      */
-    private $meta_title;
+    private string $meta_title;
     /**
      * @var string
      */
-    private $meta_description;
+    private string $meta_description;
     /**
      * @var string
      */
-    private $meta_keyword;
+    private string $meta_keyword;
 
     /**
+     * @param int $product_description_id
      * @param int $product_id
      * @param int $language_id
      * @param string $name
@@ -49,6 +54,7 @@ class ProductDescription {
      * @param string $meta_keyword
      */
     public function __construct(
+        int $product_description_id,
         int $product_id,
         int $language_id,
         string $name,
@@ -58,6 +64,7 @@ class ProductDescription {
         string $meta_description,
         string $meta_keyword
     ) {
+        $this->product_description_id = $product_description_id;
         $this->product_id = $product_id;
         $this->language_id = $language_id;
         $this->name = $name;
@@ -66,6 +73,13 @@ class ProductDescription {
         $this->meta_title = $meta_title;
         $this->meta_description = $meta_description;
         $this->meta_keyword = $meta_keyword;
+    }
+
+    /**
+     * @return int
+     */
+    public function getProductDescriptionId(): int {
+        return $this->product_description_id;
     }
 
     /**

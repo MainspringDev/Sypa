@@ -8,11 +8,11 @@ class ProductRelated {
     /**
      * @var int
      */
-    private $product_id;
+    private int $product_id;
     /**
      * @var int
      */
-    private $related_id;
+    private int $related_id;
 
     /**
      * @param int $product_id

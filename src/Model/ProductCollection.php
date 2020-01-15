@@ -8,7 +8,7 @@ class ProductCollection implements \Iterator, \Countable {
     /**
      * @var Product[]
      */
-    private $products = [];
+    private array $products = [];
 
     public function addProduct(Product $product): void {
         $this->products[] = $product;

@@ -8,7 +8,7 @@ class UserCollection {
     /**
      * @var User[]
      */
-    private $users = [];
+    private array $users = [];
 
     public function addUser(User $user): void {
         $this->users[$user->getUserId()] = $user;

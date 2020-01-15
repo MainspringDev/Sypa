@@ -8,13 +8,13 @@ class Attribute {
     /**
      * @var int
      */
-    private $attribute_id;
+    private int $attribute_id;
     /**
      * @var int
      */
-    private $attribute_group_id;
+    private int $attribute_group_id;
     /**
      * @var int
      */
-    private $sort_order;
+    private int $sort_order;
 }

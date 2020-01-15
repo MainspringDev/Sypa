@@ -8,23 +8,23 @@ class ProductOption {
     /**
      * @var int
      */
-    private $product_option_id;
+    private int $product_option_id;
     /**
      * @var int
      */
-    private $product_id;
+    private int $product_id;
     /**
      * @var int
      */
-    private $option_id;
+    private int $option_id;
     /**
      * @var string
      */
-    private $value;
+    private string $value;
     /**
      * @var bool
      */
-    private $required;
+    private bool $required;
 
     /**
      * @param int $product_option_id

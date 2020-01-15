@@ -8,19 +8,19 @@ class ProductAttribute {
     /**
      * @var int
      */
-    private $product_id;
+    private int $product_id;
     /**
      * @var int
      */
-    private $attribute_id;
+    private int $attribute_id;
     /**
      * @var int
      */
-    private $language_id;
+    private int $language_id;
     /**
      * @var string
      */
-    private $text;
+    private string $text;
 
     /**
      * @param int $product_id

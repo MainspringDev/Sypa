@@ -8,7 +8,7 @@ class CurrencyCollection implements \Iterator, \Countable {
     /**
      * @var Currency[]
      */
-    private $currencies = [];
+    private array $currencies = [];
 
     public function addCurrency(Currency $currency): void {
         $this->currencies[$currency->getCode()] = $currency;

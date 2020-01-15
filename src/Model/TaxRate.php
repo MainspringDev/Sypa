@@ -8,23 +8,23 @@ class TaxRate {
     /**
      * @var int
      */
-    private $tax_rate_id;
+    private int $tax_rate_id;
     /**
      * @var string
      */
-    private $name;
+    private string $name;
     /**
      * @var float
      */
-    private $rate;
+    private float $rate;
     /**
      * @var string
      */
-    private $type;
+    private string $type;
     /**
      * @var int
      */
-    private $priority;
+    private int $priority;
 
     /**
      * @param int $tax_rate_id

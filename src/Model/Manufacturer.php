@@ -8,36 +8,36 @@ class Manufacturer {
     /**
      * @var int
      */
-    private $manufacturer_id;
+    private int $manufacturer_id;
     /**
      * @var string
      */
-    private $image;
+    private string $image;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_added;
+    private \DateTimeImmutable $date_added;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_modified;
+    private \DateTimeImmutable $date_modified;
     /**
      * @var int
      */
-    private $sort_order;
+    private int $sort_order;
 
     /**
      * @param int $manufacturer_id
      * @param string $image
-     * @param \DateTimeInterface $date_added
-     * @param \DateTimeInterface $date_modified
+     * @param \DateTimeImmutable $date_added
+     * @param \DateTimeImmutable $date_modified
      * @param int $sort_order
      */
     public function __construct(
         int $manufacturer_id,
         string $image,
-        \DateTimeInterface $date_added,
-        \DateTimeInterface $date_modified,
+        \DateTimeImmutable $date_added,
+        \DateTimeImmutable $date_modified,
         int $sort_order
     ) {
         $this->manufacturer_id = $manufacturer_id;
@@ -62,16 +62,16 @@ class Manufacturer {
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateAdded(): \DateTimeInterface {
+    public function getDateAdded(): \DateTimeImmutable {
         return $this->date_added;
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateModified(): \DateTimeInterface {
+    public function getDateModified(): \DateTimeImmutable {
         return $this->date_modified;
     }
 

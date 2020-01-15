@@ -8,55 +8,55 @@ class ProductOptionValue {
     /**
      * @var int
      */
-    private $product_option_value_id;
+    private int $product_option_value_id;
     /**
      * @var int
      */
-    private $product_option_id;
+    private int $product_option_id;
     /**
      * @var int
      */
-    private $product_id;
+    private int $product_id;
     /**
      * @var int
      */
-    private $option_id;
+    private int $option_id;
     /**
      * @var int
      */
-    private $option_value_id;
+    private int $option_value_id;
     /**
      * @var int
      */
-    private $quantity;
+    private int $quantity;
     /**
      * @var bool
      */
-    private $subtract;
+    private bool $subtract;
     /**
      * @var float
      */
-    private $price;
+    private float $price;
     /**
      * @var NumberSignPrefixEnum
      */
-    private $price_prefix;
+    private NumberSignPrefixEnum $price_prefix;
     /**
      * @var int
      */
-    private $points;
+    private int $points;
     /**
      * @var NumberSignPrefixEnum
      */
-    private $points_prefix;
+    private NumberSignPrefixEnum $points_prefix;
     /**
      * @var float
      */
-    private $weight;
+    private float $weight;
     /**
      * @var NumberSignPrefixEnum
      */
-    private $weight_prefix;
+    private NumberSignPrefixEnum $weight_prefix;
 
     /**
      * @param int $product_option_value_id

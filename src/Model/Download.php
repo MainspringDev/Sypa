@@ -8,7 +8,7 @@ class Download {
     /**
      * @var int
      */
-    private $download_id;
+    private int $download_id;
     /**
      * @var mixed
      */
@@ -16,5 +16,5 @@ class Download {
     /**
      * @var \DateTimeImmutable
      */
-    private $date_added;
+    private \DateTimeImmutable $date_added;
 }

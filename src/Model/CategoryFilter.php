@@ -8,9 +8,9 @@ class CategoryFilter {
     /**
      * @var int
      */
-    private $category_id;
+    private int $category_id;
     /**
      * @var int
      */
-    private $filter_id;
+    private int $filter_id;
 }

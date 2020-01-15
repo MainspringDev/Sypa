@@ -10,51 +10,51 @@ class Address {
     /**
      * @var int
      */
-    private $address_id;
+    private int $address_id;
     /**
      * @var string
      */
-    private $first_name;
+    private string $first_name;
     /**
      * @var string
      */
-    private $last_name;
+    private string $last_name;
     /**
      * @var string
      */
-    private $organization;
+    private string $organization;
     /**
      * @var string
      */
-    private $street_1;
+    private string $street_1;
     /**
      * @var string
      */
-    private $street_2;
+    private string $street_2;
     /**
      * @var string
      */
-    private $city;
+    private string $city;
     /**
      * @var string
      */
-    private $postcode;
+    private string $postcode;
     /**
      * @var int
      */
-    private $country_id;
+    private int $country_id;
     /**
      * @var int
      */
-    private $zone_id;
+    private int $zone_id;
     /**
      * @var AddressClassificationEnum
      */
-    private $classification;
+    private AddressClassificationEnum $classification;
     /**
      * @var AddressValidationEnum
      */
-    private $validation;
+    private AddressValidationEnum $validation;
 
     /**
      * @param int $address_id

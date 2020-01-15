@@ -8,7 +8,7 @@ class AddressCollection implements \Iterator, \Countable {
     /**
      * @var Address[]
      */
-    private $addresses = [];
+    private array $addresses = [];
 
     public function addAddress(Address $address): void {
         $this->addresses[$address->getAddressId()] = $address;

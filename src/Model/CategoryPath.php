@@ -8,13 +8,13 @@ class CategoryPath {
     /**
      * @var int
      */
-    private $category_id;
+    private int $category_id;
     /**
      * @var int
      */
-    private $path_id;
+    private int $path_id;
     /**
      * @var int
      */
-    private $level;
+    private int $level;
 }

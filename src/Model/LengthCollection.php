@@ -8,7 +8,7 @@ class LengthCollection implements \Iterator, \Countable {
     /**
      * @var Length[]
      */
-    private $lengths = [];
+    private array $lengths = [];
 
     public function addLength(Length $length): void {
         $this->lengths[$length->getLengthId()] = $length;

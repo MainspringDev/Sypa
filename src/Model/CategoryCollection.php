@@ -8,7 +8,7 @@ class CategoryCollection implements \Iterator, \Countable {
     /**
      * @var Category[]
      */
-    private $categories = [];
+    private array $categories = [];
 
     public function addCategory(Category $category): void {
         $this->categories[] = $category;

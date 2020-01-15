@@ -8,55 +8,55 @@ class User {
     /**
      * @var int
      */
-    private $user_id;
+    private int $user_id;
     /**
      * @var int
      */
-    private $user_group_id;
+    private int $user_group_id;
     /**
      * @var string
      */
-    private $username;
+    private string $username;
     /**
      * @var string
      */
-    private $password;
+    private string $password;
     /**
      * @var string
      */
-    private $first_name;
+    private string $first_name;
     /**
      * @var string
      */
-    private $last_name;
+    private string $last_name;
     /**
      * @var string
      */
-    private $email;
+    private string $email;
     /**
      * @var string
      */
-    private $image;
+    private string $image;
     /**
      * @var string
      */
-    private $code;
+    private string $code;
     /**
      * @var string
      */
-    private $ip;
+    private string $ip;
     /**
      * @var bool
      */
-    private $status;
+    private bool $status;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_added;
+    private \DateTimeImmutable $date_added;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_modified;
+    private \DateTimeImmutable $date_modified;
 
     /**
      * @param int $user_id
@@ -70,8 +70,8 @@ class User {
      * @param string $code
      * @param string $ip
      * @param bool $status
-     * @param \DateTimeInterface $date_added
-     * @param \DateTimeInterface $date_modified
+     * @param \DateTimeImmutable $date_added
+     * @param \DateTimeImmutable $date_modified
      */
     public function __construct(
         int $user_id,
@@ -85,8 +85,8 @@ class User {
         string $code,
         string $ip,
         bool $status,
-        \DateTimeInterface $date_added,
-        \DateTimeInterface $date_modified
+        \DateTimeImmutable $date_added,
+        \DateTimeImmutable $date_modified
     ) {
         $this->user_id = $user_id;
         $this->user_group_id = $user_group_id;
@@ -181,16 +181,16 @@ class User {
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateAdded(): \DateTimeInterface {
+    public function getDateAdded(): \DateTimeImmutable {
         return $this->date_added;
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateModified(): \DateTimeInterface {
+    public function getDateModified(): \DateTimeImmutable {
         return $this->date_modified;
     }
 }

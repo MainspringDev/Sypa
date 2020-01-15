@@ -8,13 +8,13 @@ class AttributeGroupDescription {
     /**
      * @var int
      */
-    private $attribute_group_id;
+    private int $attribute_group_id;
     /**
      * @var int
      */
-    private $language_id;
+    private int $language_id;
     /**
      * @var string
      */
-    private $name;
+    private string $name;
 }

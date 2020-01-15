@@ -8,59 +8,59 @@ class Customer {
     /**
      * @var int
      */
-    private $customer_id;
+    private int $customer_id;
     /**
      * @var int
      */
-    private $customer_group_id;
+    private int $customer_group_id;
     /**
      * @var string
      */
-    private $language;
+    private string $language;
     /**
      * @var string
      */
-    private $first_name;
+    private string $first_name;
     /**
      * @var string
      */
-    private $last_name;
+    private string $last_name;
     /**
      * @var string
      */
-    private $email;
+    private string $email;
     /**
      * @var string
      */
-    private $telephone;
+    private string $telephone;
     /**
      * @var string
      */
-    private $mobile;
+    private string $mobile;
     /**
      * @var string
      */
-    private $fax;
+    private string $fax;
     /**
      * @var string
      */
-    private $password;
+    private string $password;
     /**
      * @var bool
      */
-    private $newsletter;
+    private bool $newsletter;
     /**
      * @var string
      */
-    private $ip;
+    private string $ip;
     /**
      * @var bool
      */
-    private $active;
+    private bool $active;
     /**
      * @var bool
      */
-    private $approved;
+    private bool $approved;
 
     /**
      * @param int $customer_id

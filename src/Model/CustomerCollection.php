@@ -8,7 +8,7 @@ class CustomerCollection implements \Iterator, \Countable {
     /**
      * @var Customer[]
      */
-    private $customers = [];
+    private array $customers = [];
 
     public function addCustomer(Customer $customer): void {
         $this->customers[] = $customer;

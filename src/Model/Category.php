@@ -8,39 +8,39 @@ class Category {
     /**
      * @var int
      */
-    private $category_id;
+    private int $category_id;
     /**
      * @var string
      */
-    private $image;
+    private string $image;
     /**
      * @var int
      */
-    private $parent_id;
+    private int $parent_id;
     /**
      * @var bool
      */
-    private $top;
+    private bool $top;
     /**
      * @var int
      */
-    private $column;
+    private int $column;
     /**
      * @var int
      */
-    private $sort_order;
+    private int $sort_order;
     /**
      * @var bool
      */
-    private $status;
+    private bool $status;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_added;
+    private \DateTimeImmutable $date_added;
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeImmutable
      */
-    private $date_modified;
+    private \DateTimeImmutable $date_modified;
 
     /**
      * @param int $category_id
@@ -50,8 +50,8 @@ class Category {
      * @param int $column
      * @param int $sort_order
      * @param bool $status
-     * @param \DateTimeInterface $date_added
-     * @param \DateTimeInterface $date_modified
+     * @param \DateTimeImmutable $date_added
+     * @param \DateTimeImmutable $date_modified
      */
     public function __construct(
         int $category_id,
@@ -61,8 +61,8 @@ class Category {
         int $column,
         int $sort_order,
         bool $status,
-        \DateTimeInterface $date_added,
-        \DateTimeInterface $date_modified
+        \DateTimeImmutable $date_added,
+        \DateTimeImmutable $date_modified
     ) {
         $this->category_id = $category_id;
         $this->image = $image;
@@ -125,16 +125,16 @@ class Category {
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateAdded(): \DateTimeInterface {
+    public function getDateAdded(): \DateTimeImmutable {
         return $this->date_added;
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateModified(): \DateTimeInterface {
+    public function getDateModified(): \DateTimeImmutable {
         return $this->date_modified;
     }
 }

@@ -10,39 +10,39 @@ class Currency {
     /**
      * @var int
      */
-    private $currency_id;
+    private int $currency_id;
     /**
      * @var string
      */
-    private $title;
+    private string $title;
     /**
      * @var string
      */
-    private $code;
+    private string $code;
     /**
      * @var string
      */
-    private $symbol_left;
+    private string $symbol_left;
     /**
      * @var string
      */
-    private $symbol_right;
+    private string $symbol_right;
     /**
      * @var int
      */
-    private $decimal_place;
+    private int $decimal_place;
     /**
      * @var float
      */
-    private $value;
+    private float $value;
+    /**
+     * @var \DateTimeImmutable
+     */
+    private \DateTimeImmutable $date_modified;
     /**
      * @var bool
      */
-    private $status;
-    /**
-     * @var \DateTimeInterface
-     */
-    private $date_modified;
+    private bool $status;
 
     /**
      * @param int $currency_id
@@ -52,7 +52,7 @@ class Currency {
      * @param string $symbol_right
      * @param int $decimal_place
      * @param float $value
-     * @param \DateTimeInterface $date_modified
+     * @param \DateTimeImmutable $date_modified
      * @param bool $status
      */
     public function __construct(
@@ -63,7 +63,7 @@ class Currency {
         string $symbol_right,
         int $decimal_place,
         float $value,
-        \DateTimeInterface $date_modified,
+        \DateTimeImmutable $date_modified,
         bool $status
     ) {
         if ($currency_id < 1) {
@@ -131,9 +131,9 @@ class Currency {
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return \DateTimeImmutable
      */
-    public function getDateModified(): \DateTimeInterface {
+    public function getDateModified(): \DateTimeImmutable {
         return $this->date_modified;
     }
 

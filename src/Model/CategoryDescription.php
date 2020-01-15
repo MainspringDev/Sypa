@@ -8,25 +8,25 @@ class CategoryDescription {
     /**
      * @var int
      */
-    private $category_id;
+    private int $category_id;
     /**
      * @var int
      */
-    private $language_id;
+    private int $language_id;
     /**
      * @var string
      */
-    private $description;
+    private string $description;
     /**
      * @var string
      */
-    private $meta_title;
+    private string $meta_title;
     /**
      * @var string
      */
-    private $meta_description;
+    private string $meta_description;
     /**
      * @var string
      */
-    private $meta_keyword;
+    private string $meta_keyword;
 }

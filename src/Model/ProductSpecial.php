@@ -8,31 +8,31 @@ class ProductSpecial {
     /**
      * @var int
      */
-    private $product_special_id;
+    private int $product_special_id;
     /**
      * @var int
      */
-    private $product_id;
+    private int $product_id;
     /**
      * @var int
      */
-    private $customer_group_id;
+    private int $customer_group_id;
     /**
      * @var int
      */
-    private $priority;
+    private int $priority;
     /**
      * @var float
      */
-    private $price;
+    private float $price;
     /**
      * @var \DateTimeImmutable
      */
-    private $date_start;
+    private \DateTimeImmutable $date_start;
     /**
      * @var \DateTimeImmutable
      */
-    private $date_end;
+    private \DateTimeImmutable $date_end;
 
     /**
      * @param int $product_special_id

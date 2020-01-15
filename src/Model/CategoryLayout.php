@@ -8,13 +8,13 @@ class CategoryLayout {
     /**
      * @var int
      */
-    private $category_id;
+    private int $category_id;
     /**
      * @var int
      */
-    private $store_id;
+    private int $store_id;
     /**
      * @var int
      */
-    private $layout_id;
+    private int $layout_id;
 }

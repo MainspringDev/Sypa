@@ -8,43 +8,43 @@ class Voucher {
     /**
      * @var int
      */
-    private $voucher_id;
+    private int $voucher_id;
     /**
      * @var int
      */
-    private $order_id;
+    private int $order_id;
     /**
      * @var string
      */
-    private $code;
+    private string $code;
     /**
      * @var string
      */
-    private $from_name;
+    private string $from_name;
     /**
      * @var string
      */
-    private $to_name;
+    private string $to_name;
     /**
      * @var int
      */
-    private $voucher_theme_id;
+    private int $voucher_theme_id;
     /**
      * @var string
      */
-    private $message;
+    private string $message;
     /**
      * @var float
      */
-    private $amount;
+    private float $amount;
     /**
      * @var bool
      */
-    private $status;
+    private bool $status;
     /**
      * @var \DateTimeImmutable
      */
-    private $date_added;
+    private \DateTimeImmutable $date_added;
 
     /**
      * @param int $voucher_id

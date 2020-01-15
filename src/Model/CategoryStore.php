@@ -8,9 +8,9 @@ class CategoryStore {
     /**
      * @var int
      */
-    private $category_id;
+    private int $category_id;
     /**
      * @var int
      */
-    private $store_id;
+    private int $store_id;
 }

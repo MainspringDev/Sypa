@@ -11,71 +11,71 @@ class CustomerAffiliate {
     /**
      * @var int
      */
-    private $customer_id;
+    private int $customer_id;
     /**
      * @var string
      */
-    private $company;
+    private string $company;
     /**
      * @var string
      */
-    private $website;
+    private string $website;
     /**
      * @var string
      */
-    private $tracking;
+    private string $tracking;
     /**
      * @var float
      */
-    private $commission;
+    private float $commission;
     /**
      * @var string
      */
-    private $tax;
+    private string $tax;
     /**
      * @var string
      */
-    private $payment;
+    private string $payment;
     /**
      * @var string
      */
-    private $cheque;
+    private string $cheque;
     /**
      * @var string
      */
-    private $paypal;
+    private string $paypal;
     /**
      * @var string
      */
-    private $bank_name;
+    private string $bank_name;
     /**
      * @var string
      */
-    private $bank_branch_number;
+    private string $bank_branch_number;
     /**
      * @var string
      */
-    private $bank_swift_code;
+    private string $bank_swift_code;
     /**
      * @var string
      */
-    private $bank_account_name;
+    private string $bank_account_name;
     /**
      * @var string
      */
-    private $bank_account_number;
+    private string $bank_account_number;
     /**
      * @var string
      */
-    private $custom_field;
+    private string $custom_field;
     /**
      * @var bool
      */
-    private $status;
+    private bool $status;
     /**
      * @var \DateTimeImmutable
      */
-    private $date_added;
+    private \DateTimeImmutable $date_added;
 
     /**
      * @param int $customer_id

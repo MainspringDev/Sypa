@@ -8,13 +8,13 @@ class AttributeDescription {
     /**
      * @var int
      */
-    private $attribute_id;
+    private int $attribute_id;
     /**
      * @var int
      */
-    private $language_id;
+    private int $language_id;
     /**
      * @var string
      */
-    private $name;
+    private string $name;
 }

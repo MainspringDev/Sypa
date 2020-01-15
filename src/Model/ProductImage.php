@@ -8,17 +8,17 @@ class ProductImage {
     /**
      * @var int
      */
-    private $product_image_id;
+    private int $product_image_id;
     /**
      * @var int
      */
-    private $product_id;
+    private int $product_id;
     /**
      * @var string
      */
-    private $image;
+    private string $image;
     /**
      * @var int
      */
-    private $sort_order;
+    private int $sort_order;
 }

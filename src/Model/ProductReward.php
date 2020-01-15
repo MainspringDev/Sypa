@@ -8,19 +8,19 @@ class ProductReward {
     /**
      * @var int
      */
-    private $product_reward_id;
+    private int $product_reward_id;
     /**
      * @var int
      */
-    private $product_id;
+    private int $product_id;
     /**
      * @var int
      */
-    private $customer_group_id;
+    private int $customer_group_id;
     /**
      * @var int
      */
-    private $points;
+    private int $points;
 
     /**
      * @param int $product_reward_id

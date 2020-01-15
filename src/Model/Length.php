@@ -8,19 +8,19 @@ class Length {
     /**
      * @var float
      */
-    private $value;
+    private float $value;
     /**
      * @var string
      */
-    private $unit;
+    private string $unit;
     /**
      * @var string
      */
-    private $title;
+    private string $title;
     /**
      * @var int
      */
-    private $length_id;
+    private int $length_id;
 
     /**
      * @param int $length_id
