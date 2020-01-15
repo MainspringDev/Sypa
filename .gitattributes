@@ -1,6 +1,6 @@
-/.phan         export-ignore
-/tests         export-ignore
-/var           export-ignore
+.phan/         export-ignore
+tests/         export-ignore
+var/           export-ignore
 .editorconfig  export-ignore
 .gitattributes export-ignore
 .gitignore     export-ignore

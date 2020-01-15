@@ -1,4 +1,4 @@
-<phpunit bootstrap="vendor/autoload.php" stopOnFailure="false" colors="true">
+<phpunit bootstrap="vendor/autoload.php" stopOnFailure="false" beStrictAboutCoversAnnotation="true" colors="true">
     <testsuites>
         <testsuite name="Sypa">
             <directory>tests/unit</directory>
