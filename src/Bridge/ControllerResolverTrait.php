@@ -9,9 +9,9 @@ use Sypa\Exception\UnresolvableControllerException;
 
 trait ControllerResolverTrait {
     /**
-     * @var array
+     * @var array[]
      */
-    private $controllers = [
+    private array $controllers = [
         'admin/controller/catalog/attribute' => [\OpenCart\Admin\Controller\Catalog\ControllerCatalogAttribute::class, 'index'],
         'admin/controller/catalog/attribute/index' => [\OpenCart\Admin\Controller\Catalog\ControllerCatalogAttribute::class, 'index'],
         'admin/controller/catalog/attribute/add' => [\OpenCart\Admin\Controller\Catalog\ControllerCatalogAttribute::class, 'add'],
@@ -1644,7 +1644,7 @@ trait ControllerResolverTrait {
 
     /**
      * @param string $route
-     * @return array
+     * @return string[]
      * @throws UnresolvableControllerException
      */
     public function resolveControllerRoute(string $route): array {
@@ -1668,7 +1668,7 @@ trait ControllerResolverTrait {
 
     /**
      * @param string $route
-     * @param array $callable
+     * @param array[] $callable
      */
     public function addControllerRoute(string $route, array $callable): void {
         $this->controllers[$route] = $callable;

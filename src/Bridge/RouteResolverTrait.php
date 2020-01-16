@@ -11,7 +11,7 @@ trait RouteResolverTrait {
     /**
      * @var array[]
      */
-    private $routes = [
+    private array $routes = [
         'admin/catalog/attribute' => [\OpenCart\Admin\Controller\Catalog\ControllerCatalogAttribute::class, 'index'],
         'admin/catalog/attribute/index' => [\OpenCart\Admin\Controller\Catalog\ControllerCatalogAttribute::class, 'index'],
         'admin/catalog/attribute/add' => [\OpenCart\Admin\Controller\Catalog\ControllerCatalogAttribute::class, 'add'],

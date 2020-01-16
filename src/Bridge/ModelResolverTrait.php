@@ -1821,7 +1821,7 @@ trait ModelResolverTrait {
 
     /**
      * @param string $route
-     * @return array
+     * @return string[]
      * @throws UnresolvableModelException
      */
     public function resolveModelRoute(string $route): array {
@@ -1845,7 +1845,7 @@ trait ModelResolverTrait {
 
     /**
      * @param string $route
-     * @param array $callable
+     * @param array[] $callable
      */
     public function addModelRoute(string $route, array $callable): void {
         $this->models[$route] = $callable;
