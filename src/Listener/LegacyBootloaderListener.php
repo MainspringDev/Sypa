@@ -213,7 +213,7 @@ class LegacyBootloaderListener {
         // Helper Autoload
         if ($config->has('helper_autoload')) {
             foreach ($config->get('helper_autoload') as $value) {
-                $loader->model($value);
+                $loader->helper($value);
             }
         }
     }
