@@ -13,7 +13,7 @@ class LegacyViewListener {
     /**
      * @var Container
      */
-    private $container;
+    private Container $container;
 
     /**
      * @param Container $container

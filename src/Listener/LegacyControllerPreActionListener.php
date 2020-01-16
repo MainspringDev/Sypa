@@ -15,7 +15,7 @@ class LegacyControllerPreActionListener {
     /**
      * @var Container
      */
-    private $container;
+    private Container $container;
 
     public function __construct(Container $container) {
         $this->container = $container;
