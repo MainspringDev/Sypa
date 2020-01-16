@@ -40,11 +40,11 @@ class RouterListener {
         $path = $request->getPathInfo();
         $route = $request->query->get('route');
 
-        if (\mb_stripos($path, '/admin/') === 0 || $path === '/admin') {
+        if (\mb_stripos($path, '/admin/') === 0 || \mb_strtolower($path) === '/admin') {
             return ('admin/' . $route);
         }
 
-        if (\mb_stripos($path, '/api/') === 0 || $path === '/api') {
+        if (\mb_stripos($path, '/api/') === 0 || \mb_strtolower($path) === '/api') {
             return ('api/' . $route);
         }
 
