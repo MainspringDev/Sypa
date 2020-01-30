@@ -8,7 +8,7 @@ class ManufacturerRepository {
     /**
      * @var \PDO
      */
-    private $db;
+    private \PDO $db;
 
     public function __construct(\PDO $db) {
         $this->db = $db;
@@ -16,14 +16,14 @@ class ManufacturerRepository {
 
     public function getManufacturer(int $manufacturer_id) {
         $statement = $this->db->prepare("
-            SELECT 
-                * 
-            FROM 
-                manufacturer m 
-            LEFT JOIN 
-                manufacturer_to_store m2s ON (m.manufacturer_id = m2s.manufacturer_id) 
-            WHERE 
-                m.manufacturer_id = :manufacturer_id 
+            SELECT
+                *
+            FROM
+                manufacturer m
+            LEFT JOIN
+                manufacturer_to_store m2s ON (m.manufacturer_id = m2s.manufacturer_id)
+            WHERE
+                m.manufacturer_id = :manufacturer_id
                 AND m2s.store_id = :store_id
         ");
 
@@ -38,13 +38,13 @@ class ManufacturerRepository {
     public function getManufacturers(array $data = []) {
         if ($data) {
             $sql = "
-                SELECT 
-                    * 
-                FROM 
-                    manufacturer m 
-                LEFT JOIN 
-                    manufacturer_to_store m2s ON (m.manufacturer_id = m2s.manufacturer_id) 
-                WHERE 
+                SELECT
+                    *
+                FROM
+                    manufacturer m
+                LEFT JOIN
+                    manufacturer_to_store m2s ON (m.manufacturer_id = m2s.manufacturer_id)
+                WHERE
                     m2s.store_id = :store_id
             ";
 

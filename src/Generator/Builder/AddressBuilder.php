@@ -12,51 +12,51 @@ class AddressBuilder {
     /**
      * @var int|null
      */
-    private $address_id;
+    private ?int $address_id;
     /**
      * @var string|null
      */
-    private $first_name;
+    private ?string $first_name;
     /**
      * @var string|null
      */
-    private $last_name;
+    private ?string $last_name;
     /**
      * @var string|null
      */
-    private $organization;
+    private ?string $organization;
     /**
      * @var string|null
      */
-    private $street_1;
+    private ?string $street_1;
     /**
      * @var string|null
      */
-    private $street_2;
+    private ?string $street_2;
     /**
      * @var string|null
      */
-    private $city;
+    private ?string $city;
     /**
      * @var string|null
      */
-    private $postcode;
+    private ?string $postcode;
     /**
      * @var int|null
      */
-    private $country_id;
+    private ?int $country_id;
     /**
      * @var int|null
      */
-    private $zone_id;
+    private ?int $zone_id;
     /**
      * @var AddressClassificationEnum|null
      */
-    private $classification;
+    private ?AddressClassificationEnum $classification;
     /**
      * @var AddressValidationEnum|null
      */
-    private $validation;
+    private ?AddressValidationEnum $validation;
 
     /**
      * @param int $address_id

@@ -12,11 +12,11 @@ class ProductRepository {
     /**
      * @var \PDO
      */
-    private $db;
+    private \PDO $db;
     /**
      * @var ProductHydrator
      */
-    private $productHydrator;
+    private ProductHydrator $productHydrator;
 
     public function __construct(\PDO $db, ProductHydrator $productHydrator) {
         $this->db = $db;
@@ -25,15 +25,53 @@ class ProductRepository {
 
     public function updateViewed(int $product_id): void {
         $statement = $this->db->prepare("
-            UPDATE 
-                product 
-            SET 
-                viewed = (viewed + 1) 
-            WHERE 
+            UPDATE
+                product
+            SET
+                viewed = (viewed + 1)
+            WHERE
                 product_id = :product_id
         ");
 
         $statement->execute(['product_id' => $product_id]);
+    }
+
+    /**
+     * @param string $slug
+     * @return Product
+     * @throws ResourceNotFoundException
+     */
+    public function getProductBySlug(string $slug): Product {
+        $statement = $this->db->prepare("
+            SELECT
+                `query`
+            FROM
+                url_alias
+            WHERE
+                `keyword` = :slug
+                AND `query` LIKE 'product_id=%'
+        ");
+
+        $statement->execute(['slug' => $slug]);
+
+        if ($statement->rowCount() < 1) {
+            throw new ResourceNotFoundException();
+        }
+
+        $query = $statement->fetch(\PDO::FETCH_ASSOC)['query'];
+
+        list($section, $product_id) = explode('=', $query);
+
+        return $this->getProductById($product_id);
+    }
+
+    /**
+     * @param int $product_id
+     * @return Product
+     * @throws ResourceNotFoundException
+     */
+    public function getProductById(int $product_id): Product {
+        return $this->getProduct($product_id);
     }
 
     /**
@@ -43,118 +81,118 @@ class ProductRepository {
      */
     public function getProduct(int $product_id): Product {
         $statement = $this->db->prepare("
-            SELECT 
-                DISTINCT *, 
-                pd.name AS name, 
-                p.image, 
-                m.name AS manufacturer, 
+            SELECT
+                DISTINCT *,
+                pd.name AS name,
+                p.image,
+                m.name AS manufacturer,
                 (
-                    SELECT 
-                        price 
-                    FROM 
-                        product_discount pd2 
-                    WHERE 
-                        pd2.product_id = p.product_id 
-                        AND pd2.customer_group_id = :customer_group_id 
-                        AND pd2.quantity = '1' 
+                    SELECT
+                        price
+                    FROM
+                        product_discount pd2
+                    WHERE
+                        pd2.product_id = p.product_id
+                        AND pd2.customer_group_id = :customer_group_id
+                        AND pd2.quantity = '1'
                         AND (
-                            (pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) 
+                            (pd2.date_start = '0000-00-00' OR pd2.date_start < NOW())
                             AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())
-                        ) 
-                    ORDER BY 
-                        pd2.priority, 
-                        pd2.price 
+                        )
+                    ORDER BY
+                        pd2.priority,
+                        pd2.price
                     LIMIT 1
-                ) AS discount, 
+                ) AS discount,
                 (
-                    SELECT 
-                        price 
-                    FROM 
-                        product_special ps 
-                    WHERE 
-                        ps.product_id = p.product_id 
+                    SELECT
+                        price
+                    FROM
+                        product_special ps
+                    WHERE
+                        ps.product_id = p.product_id
                         AND ps.customer_group_id = :customer_group_id
                         AND (
-                            (ps.date_start = '0000-00-00' OR ps.date_start < NOW()) 
+                            (ps.date_start = '0000-00-00' OR ps.date_start < NOW())
                             AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())
-                        ) 
-                    ORDER BY 
-                        ps.priority, 
-                        ps.price 
+                        )
+                    ORDER BY
+                        ps.priority,
+                        ps.price
                     LIMIT 1
-                ) AS special, 
+                ) AS special,
                 (
-                    SELECT 
-                        points 
-                    FROM 
-                        product_reward pr 
-                    WHERE 
-                        pr.product_id = p.product_id 
-                        AND pr.customer_group_id = :customer_group_id
-                ) AS reward, 
-                (
-                    SELECT 
-                        ss.name 
-                    FROM 
-                        stock_status ss 
-                    WHERE 
-                        ss.stock_status_id = p.stock_status_id 
-                        AND ss.language_id = :language_id
-                ) AS stock_status, 
-                (
-                    SELECT 
-                        wcd.unit 
+                    SELECT
+                        points
                     FROM
-                        weight_class_description wcd 
-                    WHERE 
-                        p.weight_class_id = wcd.weight_class_id 
+                        product_reward pr
+                    WHERE
+                        pr.product_id = p.product_id
+                        AND pr.customer_group_id = :customer_group_id
+                ) AS reward,
+                (
+                    SELECT
+                        ss.name
+                    FROM
+                        stock_status ss
+                    WHERE
+                        ss.stock_status_id = p.stock_status_id
+                        AND ss.language_id = :language_id
+                ) AS stock_status,
+                (
+                    SELECT
+                        wcd.unit
+                    FROM
+                        weight_class_description wcd
+                    WHERE
+                        p.weight_class_id = wcd.weight_class_id
                         AND wcd.language_id = :language_id
-                ) AS weight_class, 
+                ) AS weight_class,
                 (
-                    SELECT 
-                        lcd.unit 
-                    FROM 
-                        length_class_description lcd 
-                    WHERE 
-                        p.length_class_id = lcd.length_class_id 
+                    SELECT
+                        lcd.unit
+                    FROM
+                        length_class_description lcd
+                    WHERE
+                        p.length_class_id = lcd.length_class_id
                         AND lcd.language_id = :language_id
-                ) AS length_class, 
+                ) AS length_class,
                 (
-                    SELECT 
-                        AVG(rating) AS total 
-                    FROM 
-                        review r1 
-                    WHERE 
-                        r1.product_id = p.product_id 
-                        AND r1.status = '1' 
-                    GROUP BY 
+                    SELECT
+                        AVG(rating) AS total
+                    FROM
+                        review r1
+                    WHERE
+                        r1.product_id = p.product_id
+                        AND r1.status = '1'
+                    GROUP BY
                         r1.product_id
-                ) AS rating, 
+                ) AS rating,
                 (
-                    SELECT 
-                        COUNT(*) AS total 
-                    FROM 
-                        review r2 
-                    WHERE 
-                        r2.product_id = p.product_id 
-                        AND r2.status = '1' 
-                    GROUP BY 
+                    SELECT
+                        COUNT(*) AS total
+                    FROM
+                        review r2
+                    WHERE
+                        r2.product_id = p.product_id
+                        AND r2.status = '1'
+                    GROUP BY
                         r2.product_id
-                ) AS reviews, 
-                p.sort_order 
-            FROM 
-                product p 
-            LEFT JOIN 
-                product_description pd ON (p.product_id = pd.product_id) 
-            LEFT JOIN 
-                product_to_store p2s ON (p.product_id = p2s.product_id) 
-            LEFT JOIN 
-                manufacturer m ON (p.manufacturer_id = m.manufacturer_id) 
-            WHERE 
-                p.product_id = :product_id 
-                AND pd.language_id = :language_id 
-                AND p.status = '1' 
-                AND p.date_available <= NOW() 
+                ) AS reviews,
+                p.sort_order
+            FROM
+                product p
+            LEFT JOIN
+                product_description pd ON (p.product_id = pd.product_id)
+            LEFT JOIN
+                product_to_store p2s ON (p.product_id = p2s.product_id)
+            LEFT JOIN
+                manufacturer m ON (p.manufacturer_id = m.manufacturer_id)
+            WHERE
+                p.product_id = :product_id
+                AND pd.language_id = :language_id
+                AND p.status = '1'
+                AND p.date_available <= NOW()
                 AND p2s.store_id = :store_id
         ");
 
@@ -224,7 +262,7 @@ class ProductRepository {
         return $product;
     }
 
-    public function getProducts(array $data = array()) {
+    public function getProducts(array $data = []) {
         $sql = "SELECT p.product_id, (SELECT AVG(rating) AS total FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, (SELECT price FROM " . DB_PREFIX . "product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, (SELECT price FROM " . DB_PREFIX . "product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special";
 
         if (!empty($data['filter_category_id'])) {
@@ -377,7 +415,7 @@ class ProductRepository {
         return $product_data;
     }
 
-    public function getProductSpecials(array $data = array()) {
+    public function getProductSpecials(array $data = []) {
         $sql = "SELECT DISTINCT ps.product_id, (SELECT AVG(rating) FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = ps.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating FROM " . DB_PREFIX . "product_special ps LEFT JOIN " . DB_PREFIX . "product p ON (ps.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND ps.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) GROUP BY ps.product_id";
 
         $sort_data = array(

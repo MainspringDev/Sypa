@@ -8,7 +8,7 @@ class CategoryRepository {
     /**
      * @var \PDO
      */
-    private $db;
+    private \PDO $db;
 
     public function __construct(\PDO $db) {
         $this->db = $db;
@@ -16,18 +16,18 @@ class CategoryRepository {
 
     public function getCategory(int $category_id): array {
         $statement = $this->db->prepare("
-            SELECT 
-                DISTINCT * 
-            FROM 
-                category c 
-            LEFT JOIN 
-                category_description cd ON (c.category_id = cd.category_id) 
-            LEFT JOIN 
-                category_to_store c2s ON (c.category_id = c2s.category_id) 
-            WHERE 
-                c.category_id = :category_id 
-                AND cd.language_id = :language_id 
-                AND c2s.store_id = :store_id 
+            SELECT
+                DISTINCT *
+            FROM
+                category c
+            LEFT JOIN
+                category_description cd ON (c.category_id = cd.category_id)
+            LEFT JOIN
+                category_to_store c2s ON (c.category_id = c2s.category_id)
+            WHERE
+                c.category_id = :category_id
+                AND cd.language_id = :language_id
+                AND c2s.store_id = :store_id
                 AND c.status = '1'
         ");
 
@@ -40,25 +40,78 @@ class CategoryRepository {
         return $statement->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function getCategories(int $parent_id = 0) {
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category c LEFT JOIN " . DB_PREFIX . "category_description cd ON (c.category_id = cd.category_id) LEFT JOIN " . DB_PREFIX . "category_to_store c2s ON (c.category_id = c2s.category_id) WHERE c.parent_id = '" . (int)$parent_id . "' AND cd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND c2s.store_id = '" . (int)$this->config->get('config_store_id') . "'  AND c.status = '1' ORDER BY c.sort_order, LCASE(cd.name)");
+    public function getCategories(int $parent_id = 0): array {
+        $statement = $this->db->prepare("
+            SELECT
+                *
+            FROM
+                category c
+            LEFT JOIN
+                category_description cd ON (c.category_id = cd.category_id)
+            LEFT JOIN
+                category_to_store c2s ON (c.category_id = c2s.category_id)
+            WHERE
+                c.parent_id = :parent_id
+                AND cd.language_id = :language_id
+                AND c2s.store_id = :store_id
+                AND c.status = '1'
+            ORDER BY
+                c.sort_order,
+                cd.name
+        ");
 
-        return $query->rows;
+        $statement->execute([
+            'parent_id'   => $parent_id,
+            'language_id' => (int)$this->config->get('config_language_id'),
+            'store_id'    => (int)$this->config->get('config_store_id')
+        ]);
+
+        return $statement->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function getCategoryFilters(int $category_id) {
+    public function getCategoryFilters(int $category_id): array {
         $implode = array();
 
-        $query = $this->db->query("SELECT filter_id FROM " . DB_PREFIX . "category_filter WHERE category_id = '" . (int)$category_id . "'");
+        $statement = $this->db->prepare("
+            SELECT
+                filter_id
+            FROM
+                category_filter
+            WHERE
+                category_id = :category_id
+        ");
 
-        foreach ($query->rows as $result) {
+        $statement->execute([
+            'category_id' => $category_id
+        ]);
+
+        foreach ($statement->fetchAll(\PDO::FETCH_ASSOC) as $result) {
             $implode[] = (int)$result['filter_id'];
         }
 
         $filter_group_data = array();
 
         if ($implode) {
-            $filter_group_query = $this->db->query("SELECT DISTINCT f.filter_group_id, fgd.name, fg.sort_order FROM " . DB_PREFIX . "filter f LEFT JOIN " . DB_PREFIX . "filter_group fg ON (f.filter_group_id = fg.filter_group_id) LEFT JOIN " . DB_PREFIX . "filter_group_description fgd ON (fg.filter_group_id = fgd.filter_group_id) WHERE f.filter_id IN (" . implode(',', $implode) . ") AND fgd.language_id = '" . (int)$this->config->get('config_language_id') . "' GROUP BY f.filter_group_id ORDER BY fg.sort_order, LCASE(fgd.name)");
+            $filter_group_query = $this->db->prepare("
+                SELECT
+                    DISTINCT f.filter_group_id,
+                    fgd.name,
+                    fg.sort_order
+                FROM
+                    filter f
+                LEFT JOIN
+                    filter_group fg ON (f.filter_group_id = fg.filter_group_id)
+                LEFT JOIN
+                    filter_group_description fgd ON (fg.filter_group_id = fgd.filter_group_id)
+                WHERE
+                    f.filter_id IN (" . implode(',', $implode) . ")
+                    AND fgd.language_id = '" . (int)$this->config->get('config_language_id') . "'
+                GROUP BY
+                    f.filter_group_id
+                ORDER BY
+                    fg.sort_order,
+                    fgd.name
+            ");
 
             foreach ($filter_group_query->rows as $filter_group) {
                 $filter_data = array();
@@ -85,19 +138,44 @@ class CategoryRepository {
         return $filter_group_data;
     }
 
-    public function getCategoryLayoutId(int $category_id) {
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_to_layout WHERE category_id = '" . (int)$category_id . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'");
+    public function getCategoryLayoutId(int $category_id): int {
+        $statement = $this->db->prepare("
+            SELECT
+                *
+            FROM
+                category_to_layout
+            WHERE
+                category_id = :category_id
+                AND store_id = :store_id
+        ");
 
-        if ($query->num_rows) {
-            return (int)$query->row['layout_id'];
-        }
-            return 0;
+        $statement->execute([
+            'category_id' => $category_id,
+            'store_id'    => (int)$this->config->get('config_store_id')
+        ]);
 
+        return $statement->fetch(\PDO::FETCH_ASSOC)['layout_id'] ?? 0;
     }
 
-    public function getTotalCategoriesByCategoryId(int $parent_id = 0) {
-        $query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "category c LEFT JOIN " . DB_PREFIX . "category_to_store c2s ON (c.category_id = c2s.category_id) WHERE c.parent_id = '" . (int)$parent_id . "' AND c2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND c.status = '1'");
+    public function getTotalCategoriesByCategoryId(int $parent_id = 0): int {
+        $statement = $this->db->prepare("
+            SELECT
+                COUNT(*) AS total
+            FROM
+                category c
+            LEFT JOIN
+                category_to_store c2s ON (c.category_id = c2s.category_id)
+            WHERE
+                c.parent_id = :parent_id
+                AND c2s.store_id = :store_id
+                AND c.status = '1'
+        ");
 
-        return $query->row['total'];
+        $statement->execute([
+            'parent_id' => $parent_id,
+            'store_id'  => (int)$this->config->get('config_store_id')
+        ]);
+
+        return $statement->fetch(\PDO::FETCH_ASSOC)['total'];
     }
 }
