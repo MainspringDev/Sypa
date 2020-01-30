@@ -73,9 +73,9 @@ class User {
             }
 
             return true;
-        }
+        } else {
             return false;
-
+        }
     }
 
     public function logout() {
@@ -88,9 +88,9 @@ class User {
     public function hasPermission($key, $value) {
         if (isset($this->permission[$key])) {
             return in_array($value, $this->permission[$key]);
-        }
+        } else {
             return false;
-
+        }
     }
 
     public function isLogged() {

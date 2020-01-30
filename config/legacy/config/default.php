@@ -21,7 +21,7 @@ return [
     'db_port'              => 3306,
 
     // Mail
-    'mail_engine'          => 'mail', // mail or smtp
+    'mail_engine'          => \OpenCart\System\Library\Mail\Mail::class, // mail or smtp
     'mail_from'            => '', // Your E-Mail
     'mail_sender'          => '', // Your name or company name
     'mail_reply_to'        => '', // Reply to E-Mail

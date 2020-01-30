@@ -17,7 +17,7 @@ class Url {
     /**
      * @param string $url
      */
-    public function __construct(string $url) {
+    public function __construct($url) {
         $this->url = $url;
     }
 
@@ -27,7 +27,7 @@ class Url {
      * @param Controller $rewrite
      * @return void
      */
-    public function addRewrite(Controller $rewrite): void {
+    public function addRewrite($rewrite) {
         $this->rewrite[] = $rewrite;
     }
 
@@ -39,7 +39,7 @@ class Url {
      * @param bool $js
      * @return string
      */
-    public function link(string $route, $args = '', bool $js = false): string {
+    public function link($route, $args = '', $js = false) {
         $url = $this->url . 'index.php?route=' . (string)$route;
 
         if ($args) {

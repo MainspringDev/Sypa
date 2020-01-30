@@ -71,9 +71,9 @@ final class Tax {
             }
 
             return $value + $amount;
-        }
+        } else {
             return $value;
-
+        }
     }
 
     public function getTax($value, $tax_class_id) {
@@ -93,9 +93,9 @@ final class Tax {
 
         if ($tax_query->num_rows) {
             return $tax_query->row['name'];
-        }
+        } else {
             return false;
-
+        }
     }
 
     public function getRates($value, $tax_class_id) {

@@ -8,7 +8,7 @@ class Log {
     /**
      * @param string $filename
      */
-    public function __construct(string $filename) {
+    public function __construct($filename) {
         $file = DIR_LOGS . $filename;
 
         if (!is_file($file)) {
@@ -22,7 +22,7 @@ class Log {
      * @param string|array $message
      * @return void
      */
-    public function write($message): void {
+    public function write($message) {
         fwrite($this->handle, date('Y-m-d G:i:s') . ' - ' . print_r($message, true) . "\n");
     }
 

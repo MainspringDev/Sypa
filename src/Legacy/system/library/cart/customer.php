@@ -41,7 +41,7 @@ class Customer {
   public function login($email, $password, $override = false) {
         $customer_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE LOWER(email) = '" . $this->db->escape(utf8_strtolower($email)) . "' AND status = '1'");
 
-        if ($customer_query->num_rows) {
+        if ($customer_query->row) {
             if (!$override) {
                 if (password_verify($password, $customer_query->row['password'])) {
                     $rehash = password_needs_rehash($customer_query->row['password'], PASSWORD_DEFAULT);
@@ -72,9 +72,9 @@ class Customer {
             $this->db->query("UPDATE " . DB_PREFIX . "customer SET language_id = '" . (int)$this->config->get('config_language_id') . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 
             return true;
-        }
+        } else {
             return false;
-
+        }
     }
 
     public function logout() {
@@ -83,7 +83,7 @@ class Customer {
         $this->customer_id = '';
         $this->firstname = '';
         $this->lastname = '';
-        $this->customer_group_id = '';
+        $this->customer_group_id = 0;
         $this->email = '';
         $this->telephone = '';
         $this->newsletter = '';
@@ -127,13 +127,13 @@ class Customer {
     }
 
     public function getBalance() {
-        $query = $this->db->query("SELECT SUM(amount) AS total FROM " . DB_PREFIX . "customer_transaction WHERE customer_id = '" . (int)$this->customer_id . "'");
+        $query = $this->db->query("SELECT SUM(amount) AS total FROM `" . DB_PREFIX . "customer_transaction` WHERE `customer_id` = '" . (int)$this->customer_id . "'");
 
         return $query->row['total'];
     }
 
     public function getRewardPoints() {
-        $query = $this->db->query("SELECT SUM(points) AS total FROM " . DB_PREFIX . "customer_reward WHERE customer_id = '" . (int)$this->customer_id . "'");
+        $query = $this->db->query("SELECT SUM(points) AS total FROM `" . DB_PREFIX . "customer_reward` WHERE `customer_id` = '" . (int)$this->customer_id . "'");
 
         return $query->row['total'];
     }

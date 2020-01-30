@@ -44,16 +44,16 @@ class Length {
     public function format($value, $length_class_id, $decimal_point = '.', $thousand_point = ',') {
         if (isset($this->lengths[$length_class_id])) {
             return number_format($value, 2, $decimal_point, $thousand_point) . $this->lengths[$length_class_id]['unit'];
-        }
+        } else {
             return number_format($value, 2, $decimal_point, $thousand_point);
-
+        }
     }
 
     public function getUnit($length_class_id) {
         if (isset($this->lengths[$length_class_id])) {
             return $this->lengths[$length_class_id]['unit'];
-        }
+        } else {
             return '';
-
+        }
     }
 }

@@ -14,7 +14,7 @@ class DB {
      * @param int|null $port
      * @throws \Exception
      */
-    public function __construct(string $adaptor, string $hostname, string $username, string $password, string $database, ?int $port = null) {
+    public function __construct($adaptor, $hostname, $username, $password, $database, $port = null) {
         $class = $adaptor;
 
         if (class_exists($class)) {
@@ -28,7 +28,7 @@ class DB {
      * @param string $sql
      * @return mixed
      */
-    public function query(string $sql) {
+    public function query($sql) {
         return $this->adaptor->query($sql);
     }
 
@@ -43,21 +43,21 @@ class DB {
     /**
      * @return int
      */
-    public function countAffected(): int {
+    public function countAffected() {
         return $this->adaptor->countAffected();
     }
 
     /**
      * @return int
      */
-    public function getLastId(): int {
+    public function getLastId() {
         return $this->adaptor->getLastId();
     }
 
     /**
      * @return bool
      */
-    public function isConnected(): bool {
+    public function isConnected() {
         return $this->adaptor->isConnected();
     }
 }

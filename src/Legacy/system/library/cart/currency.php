@@ -74,41 +74,41 @@ class Currency {
     public function getId($currency) {
         if (isset($this->currencies[$currency])) {
             return $this->currencies[$currency]['currency_id'];
-        }
+        } else {
             return 0;
-
+        }
     }
 
     public function getSymbolLeft($currency) {
         if (isset($this->currencies[$currency])) {
             return $this->currencies[$currency]['symbol_left'];
-        }
+        } else {
             return '';
-
+        }
     }
 
     public function getSymbolRight($currency) {
         if (isset($this->currencies[$currency])) {
             return $this->currencies[$currency]['symbol_right'];
-        }
+        } else {
             return '';
-
+        }
     }
 
     public function getDecimalPlace($currency) {
         if (isset($this->currencies[$currency])) {
             return $this->currencies[$currency]['decimal_place'];
-        }
+        } else {
             return 0;
-
+        }
     }
 
     public function getValue($currency) {
         if (isset($this->currencies[$currency])) {
             return $this->currencies[$currency]['value'];
-        }
+        } else {
             return 0;
-
+        }
     }
 
     public function has($currency) {

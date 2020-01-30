@@ -40,12 +40,12 @@ final class PgSQL {
                 unset($data);
 
                 return $query;
-            }
+            } else {
                 return true;
-
-        }
+            }
+        } else {
             throw new \Exception('Error: ' . pg_result_error($this->connection) . '<br />' . $sql);
-
+        }
     }
 
     public function escape($value) {
@@ -59,9 +59,9 @@ final class PgSQL {
     public function isConnected() {
         if (pg_connection_status($this->connection) == PGSQL_CONNECTION_OK) {
             return true;
-        }
+        } else {
             return false;
-
+        }
     }
 
     public function getLastId() {

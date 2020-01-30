@@ -10,7 +10,7 @@ class Cache {
      * @param int $expire
      * @throws \Exception
      */
-    public function __construct(string $adaptor, int $expire = 3600) {
+    public function __construct($adaptor, $expire = 3600) {
         $class = $adaptor;
 
         if (class_exists($class)) {
@@ -24,7 +24,7 @@ class Cache {
      * @param string $key
      * @return mixed
      */
-    public function get(string $key) {
+    public function get($key) {
         return $this->adaptor->get($key);
     }
 
@@ -33,7 +33,7 @@ class Cache {
      * @param $value
      * @return mixed
      */
-    public function set(string $key, $value) {
+    public function set($key, $value) {
         return $this->adaptor->set($key, $value);
     }
 
@@ -41,7 +41,7 @@ class Cache {
      * @param $key
      * @return bool
      */
-    public function delete($key): bool {
+    public function delete($key) {
         return $this->adaptor->delete($key);
     }
 }

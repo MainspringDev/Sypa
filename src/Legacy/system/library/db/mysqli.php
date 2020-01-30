@@ -38,12 +38,12 @@ final class MySQLi {
                 $query->close();
 
                 return $result;
-            }
+            } else {
                 return true;
-
-        }
+            }
+        } else {
             throw new \Exception('Error: ' . $this->connection->error . '<br />Error No: ' . $this->connection->errno . '<br />' . $sql);
-
+        }
     }
 
     public function escape($value) {

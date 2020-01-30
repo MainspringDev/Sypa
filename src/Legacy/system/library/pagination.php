@@ -89,8 +89,8 @@ class Pagination {
 
         if ($num_pages > 1) {
             return $output;
-        }
+        } else {
             return '';
-
+        }
     }
 }

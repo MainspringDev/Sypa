@@ -18,7 +18,7 @@ class Language {
      * @param string $key
      * @return string|array @todo See self::set() receiving an array
      */
-    public function get(string $key) {
+    public function get($key) {
         return (isset($this->data[$key]) ? $this->data[$key] : $key);
     }
 
@@ -29,14 +29,14 @@ class Language {
      * @param string|mixed $value  @todo Some codes sends an array
      * @return void
      */
-    public function set(string $key, $value): void {
+    public function set($key, $value) {
         $this->data[$key] = $value;
     }
 
     /**
      * @return array
      */
-    public function all(): array {
+    public function all() {
         return $this->data;
     }
 
@@ -45,7 +45,7 @@ class Language {
      * @param string $prefix
      * @return array
      */
-    public function load(string $filename, string $prefix = ''): array {
+    public function load($filename, $prefix = '') {
         $_ = array();
 
         $file = DIR_LANGUAGE . $this->default . '/' . $filename . '.php';

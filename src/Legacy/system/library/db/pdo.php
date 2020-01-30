@@ -62,14 +62,14 @@ final class PDO {
 
         if ($result) {
             return $result;
-        }
+        } else {
             $result = new \stdClass();
             $result->row = array();
             $result->rows = array();
             $result->num_rows = 0;
 
             return $result;
-
+        }
     }
 
     public function prepare($sql) {
@@ -91,9 +91,9 @@ final class PDO {
     public function countAffected() {
         if ($this->statement) {
             return $this->statement->rowCount();
-        }
+        } else {
             return 0;
-
+        }
     }
 
     public function getLastId() {
@@ -103,9 +103,9 @@ final class PDO {
     public function isConnected() {
         if ($this->connection) {
             return true;
-        }
+        } else {
             return false;
-
+        }
     }
 
     public function __destruct() {

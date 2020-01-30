@@ -2,6 +2,8 @@
 
 namespace OpenCart\System\Library;
 
+use OpenCart\System\Engine\Registry;
+
 class Session {
     protected $adaptor;
     protected $session_id;
@@ -10,8 +12,8 @@ class Session {
     /**
      * Constructor
      *
-     * @param	string	$adaptor
-     * @param	object	$registry
+     * @param string $adaptor
+     * @param Registry|string $registry
      */
     public function __construct($adaptor, $registry = '') {
         $class = $adaptor;

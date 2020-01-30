@@ -52,7 +52,7 @@ try {
     $response->send();
 
     $kernel->terminate($request, $response);
-} catch (\Exception $e) {
+} catch (\Throwable $e) {
     if (($_ENV['ENVIRONMENT'] ?? 'prod') === 'dev') {
         echo "<pre>{$e->getMessage()}\n{$e->getFile()}\n{$e->getLine()}\n{$e->getTraceAsString()}</pre>";
     }
@@ -67,4 +67,7 @@ try {
 
     $response = new Response($content, 500);
     $response->send();
+} finally {
+    // @todo log
+    // @todo error dispatching
 }
