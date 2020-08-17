@@ -1,6 +1,7 @@
 {
     "require": {
         "php": "^7.4",
+        "ext-gd": "*",
         "ext-json": "*",
         "ext-pdo": "*",
         "guzzlehttp/guzzle": "^6.3",
@@ -16,13 +17,21 @@
         "vlucas/phpdotenv": "^3.6"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.15",
-        "infection/infection": "^0.14.1",
-        "phan/phan": "^2.4",
-        "phploc/phploc": "^5.0",
-        "phpstan/phpstan": "^0.11.16",
-        "phpunit/phpunit": "^8.4",
-        "vimeo/psalm": "^3.8"
+        "brianium/paratest": "^3.0 || ^2.0",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "infection/infection": "^0.16",
+        "johnkary/phpunit-speedtrap": "^3.2",
+        "niels-de-blaauw/php-doc-check": "^0.2",
+        "phan/phan": "^3.0",
+        "phploc/phploc": "^6.0 || ^5.0",
+        "phpmetrics/phpmetrics": "^2.7",
+        "phpstan/extension-installer": "^1.0",
+        "phpstan/phpstan": "^0.12",
+        "phpstan/phpstan-phpunit": "^0.12",
+        "phpstan/phpstan-strict-rules": "^0.12",
+        "phpunit/phpunit": "^9.0 || ^8.0 || ^7.5",
+        "thecodingmachine/phpstan-strict-rules": "^0.12",
+        "vimeo/psalm": "^3.13"
     },
     "autoload": {
         "psr-4": {
@@ -40,7 +49,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Sypa\\Test\\": "tests/"
+            "Sypa\\Test\\Unit\\": "tests/unit/"
         }
     },
     "config": {
