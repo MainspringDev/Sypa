@@ -6,7 +6,7 @@ namespace Sypa\Model;
 
 class CurrencyCollection implements \Iterator, \Countable {
     /**
-     * @var Currency[]
+     * @var array<int, Currency>
      */
     private array $currencies = [];
 

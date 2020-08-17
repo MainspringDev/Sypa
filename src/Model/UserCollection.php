@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Sypa\Model;
 
+use Sypa\Exception\ResourceNotFoundException;
+
 class UserCollection {
     /**
-     * @var User[]
+     * @var array<int, User>
      */
     private array $users = [];
 
@@ -19,12 +21,11 @@ class UserCollection {
     }
 
     public function getUser(int $user_id): User {
-        if ($this->hasUser($user_id) === true) {
-            return $this->users[$user_id];
+        if ($this->hasUser($user_id) === false) {
+            throw new ResourceNotFoundException();
         }
 
-        // @todo exception
-        throw new \Exception();
+        return $this->users[$user_id];
     }
 
     public function current(): ?User {

@@ -65,6 +65,10 @@ class AddressHydrator {
         );
     }
 
+    /**
+     * @param Address $address
+     * @return array<string, mixed>
+     */
     public function extract(Address $address): array {
         return [
             'address_id'     => $address->getAddressId(),

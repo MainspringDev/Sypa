@@ -6,7 +6,7 @@ namespace Sypa\Model;
 
 class CustomerCollection implements \Iterator, \Countable {
     /**
-     * @var Customer[]
+     * @var array<int, Customer>
      */
     private array $customers = [];
 

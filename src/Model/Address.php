@@ -7,69 +7,19 @@ namespace Sypa\Model;
 use Sypa\Exception\InvalidResourceIdentifierException;
 
 class Address {
-    /**
-     * @var int
-     */
     private int $address_id;
-    /**
-     * @var string
-     */
     private string $first_name;
-    /**
-     * @var string
-     */
     private string $last_name;
-    /**
-     * @var string
-     */
     private string $organization;
-    /**
-     * @var string
-     */
     private string $street_1;
-    /**
-     * @var string
-     */
     private string $street_2;
-    /**
-     * @var string
-     */
     private string $city;
-    /**
-     * @var string
-     */
     private string $postcode;
-    /**
-     * @var int
-     */
     private int $country_id;
-    /**
-     * @var int
-     */
     private int $zone_id;
-    /**
-     * @var AddressClassificationEnum
-     */
     private AddressClassificationEnum $classification;
-    /**
-     * @var AddressValidationEnum
-     */
     private AddressValidationEnum $validation;
 
-    /**
-     * @param int $address_id
-     * @param string $first_name
-     * @param string $last_name
-     * @param string $organization
-     * @param string $street_1
-     * @param string $street_2
-     * @param string $city
-     * @param string $postcode
-     * @param int $country_id
-     * @param int $zone_id
-     * @param AddressClassificationEnum $classification
-     * @param AddressValidationEnum $validation
-     */
     public function __construct(
         int $address_id,
         string $first_name,
@@ -105,86 +55,50 @@ class Address {
         $this->validation = $validation;
     }
 
-    /**
-     * @return int
-     */
     public function getAddressId(): int {
         return $this->address_id;
     }
 
-    /**
-     * @return string
-     */
     public function getFirstName(): string {
         return $this->first_name;
     }
 
-    /**
-     * @return string
-     */
     public function getLastName(): string {
         return $this->last_name;
     }
 
-    /**
-     * @return string
-     */
     public function getOrganization(): string {
         return $this->organization;
     }
 
-    /**
-     * @return string
-     */
     public function getStreet1(): string {
         return $this->street_1;
     }
 
-    /**
-     * @return string
-     */
     public function getStreet2(): string {
         return $this->street_2;
     }
 
-    /**
-     * @return string
-     */
     public function getCity(): string {
         return $this->city;
     }
 
-    /**
-     * @return string
-     */
     public function getPostcode(): string {
         return $this->postcode;
     }
 
-    /**
-     * @return int
-     */
     public function getCountryId(): int {
         return $this->country_id;
     }
 
-    /**
-     * @return int
-     */
     public function getZoneId(): int {
         return $this->zone_id;
     }
 
-    /**
-     * @return AddressClassificationEnum
-     */
     public function getClassification(): AddressClassificationEnum {
         return $this->classification;
     }
 
-    /**
-     * @return AddressValidationEnum
-     */
     public function getValidation(): AddressValidationEnum {
         return $this->validation;
     }

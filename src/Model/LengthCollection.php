@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Sypa\Model;
 
+use Sypa\Exception\ResourceNotFoundException;
+
 class LengthCollection implements \Iterator, \Countable {
     /**
-     * @var Length[]
+     * @var array<int, Length>
      */
     private array $lengths = [];
 
@@ -18,10 +20,14 @@ class LengthCollection implements \Iterator, \Countable {
         return array_key_exists($id, $this->lengths);
     }
 
+    /**
+     * @param int $id
+     * @return Length
+     * @throws ResourceNotFoundException
+     */
     public function getLength(int $id): Length {
         if ($this->hasLength($id) === false) {
-            // @todo exception
-            throw new \Exception();
+            throw new ResourceNotFoundException();
         }
 
         return $this->lengths[$id];

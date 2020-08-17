@@ -5,74 +5,57 @@ declare(strict_types=1);
 namespace Sypa\Model;
 
 class TaxRate {
-    /**
-     * @var int
-     */
     private int $tax_rate_id;
-    /**
-     * @var string
-     */
+    private int $geo_zone_id;
     private string $name;
-    /**
-     * @var float
-     */
     private float $rate;
-    /**
-     * @var string
-     */
-    private string $type;
-    /**
-     * @var int
-     */
-    private int $priority;
+    private $type;
+    private \DateTimeImmutable $date_added;
+    private \DateTimeImmutable $date_modified;
 
-    /**
-     * @param int $tax_rate_id
-     * @param string $name
-     * @param float $rate
-     * @param string $type
-     * @param int $priority
-     */
-    public function __construct(int $tax_rate_id, string $name, float $rate, string $type, int $priority) {
+    public function __construct(
+        int $tax_rate_id,
+        int $geo_zone_id,
+        string $name,
+        float $rate,
+        $type,
+        \DateTimeImmutable $date_added,
+        \DateTimeImmutable $date_modified
+    ) {
         $this->tax_rate_id = $tax_rate_id;
+        $this->geo_zone_id = $geo_zone_id;
         $this->name = $name;
         $this->rate = $rate;
         $this->type = $type;
-        $this->priority = $priority;
+        $this->date_added = $date_added;
+        $this->date_modified = $date_modified;
     }
 
-    /**
-     * @return int
-     */
     public function getTaxRateId(): int {
         return $this->tax_rate_id;
     }
 
-    /**
-     * @return string
-     */
+    public function getGeoZoneId(): int {
+        return $this->geo_zone_id;
+    }
+
     public function getName(): string {
         return $this->name;
     }
 
-    /**
-     * @return float
-     */
     public function getRate(): float {
         return $this->rate;
     }
 
-    /**
-     * @return string
-     */
-    public function getType(): string {
+    public function getType() {
         return $this->type;
     }
 
-    /**
-     * @return int
-     */
-    public function getPriority(): int {
-        return $this->priority;
+    public function getDateAdded(): \DateTimeImmutable {
+        return $this->date_added;
+    }
+
+    public function getDateModified(): \DateTimeImmutable {
+        return $this->date_modified;
     }
 }

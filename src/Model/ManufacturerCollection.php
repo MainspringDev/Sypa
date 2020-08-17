@@ -6,7 +6,7 @@ namespace Sypa\Model;
 
 class ManufacturerCollection implements \Iterator, \Countable {
     /**
-     * @var Manufacturer[]
+     * @var array<int, Manufacturer>
      */
     private array $manufacturers = [];
 

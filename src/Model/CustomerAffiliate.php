@@ -8,94 +8,24 @@ use Sypa\Exception\InvalidResourceIdentifierException;
 use Sypa\Exception\InvalidStringLengthException;
 
 class CustomerAffiliate {
-    /**
-     * @var int
-     */
     private int $customer_id;
-    /**
-     * @var string
-     */
     private string $company;
-    /**
-     * @var string
-     */
     private string $website;
-    /**
-     * @var string
-     */
     private string $tracking;
-    /**
-     * @var float
-     */
     private float $commission;
-    /**
-     * @var string
-     */
     private string $tax;
-    /**
-     * @var string
-     */
     private string $payment;
-    /**
-     * @var string
-     */
     private string $cheque;
-    /**
-     * @var string
-     */
     private string $paypal;
-    /**
-     * @var string
-     */
     private string $bank_name;
-    /**
-     * @var string
-     */
     private string $bank_branch_number;
-    /**
-     * @var string
-     */
     private string $bank_swift_code;
-    /**
-     * @var string
-     */
     private string $bank_account_name;
-    /**
-     * @var string
-     */
     private string $bank_account_number;
-    /**
-     * @var string
-     */
     private string $custom_field;
-    /**
-     * @var bool
-     */
     private bool $status;
-    /**
-     * @var \DateTimeImmutable
-     */
     private \DateTimeImmutable $date_added;
 
-    /**
-     * @param int $customer_id
-     * @param string $company
-     * @param string $website
-     * @param string $tracking
-     * @param float $commission
-     * @param string $tax
-     * @param string $payment
-     * @param string $cheque
-     * @param string $paypal
-     * @param string $bank_name
-     * @param string $bank_branch_number
-     * @param string $bank_swift_code
-     * @param string $bank_account_name
-     * @param string $bank_account_number
-     * @param string $custom_field
-     * @param bool $status
-     * @param \DateTimeImmutable $date_added
-     */
     public function __construct(
         int $customer_id,
         string $company,
@@ -225,121 +155,70 @@ class CustomerAffiliate {
         $this->date_added = $date_added;
     }
 
-    /**
-     * @return int
-     */
     public function getCustomerId(): int {
         return $this->customer_id;
     }
 
-    /**
-     * @return string
-     */
     public function getCompany(): string {
         return $this->company;
     }
 
-    /**
-     * @return string
-     */
     public function getWebsite(): string {
         return $this->website;
     }
 
-    /**
-     * @return string
-     */
     public function getTracking(): string {
         return $this->tracking;
     }
 
-    /**
-     * @return float
-     */
     public function getCommission(): float {
         return $this->commission;
     }
 
-    /**
-     * @return string
-     */
     public function getTax(): string {
         return $this->tax;
     }
 
-    /**
-     * @return string
-     */
     public function getPayment(): string {
         return $this->payment;
     }
 
-    /**
-     * @return string
-     */
     public function getCheque(): string {
         return $this->cheque;
     }
 
-    /**
-     * @return string
-     */
     public function getPaypal(): string {
         return $this->paypal;
     }
 
-    /**
-     * @return string
-     */
     public function getBankName(): string {
         return $this->bank_name;
     }
 
-    /**
-     * @return string
-     */
     public function getBankBranchNumber(): string {
         return $this->bank_branch_number;
     }
 
-    /**
-     * @return string
-     */
     public function getBankSwiftCode(): string {
         return $this->bank_swift_code;
     }
 
-    /**
-     * @return string
-     */
     public function getBankAccountName(): string {
         return $this->bank_account_name;
     }
 
-    /**
-     * @return string
-     */
     public function getBankAccountNumber(): string {
         return $this->bank_account_number;
     }
 
-    /**
-     * @return string
-     */
     public function getCustomField(): string {
         return $this->custom_field;
     }
 
-    /**
-     * @return bool
-     */
     public function isStatus(): bool {
         return $this->status;
     }
 
-    /**
-     * @return \DateTimeImmutable
-     */
     public function getDateAdded(): \DateTimeImmutable {
         return $this->date_added;
     }

@@ -5,74 +5,20 @@ declare(strict_types=1);
 namespace Sypa\Model;
 
 class ProductOptionValue {
-    /**
-     * @var int
-     */
     private int $product_option_value_id;
-    /**
-     * @var int
-     */
     private int $product_option_id;
-    /**
-     * @var int
-     */
     private int $product_id;
-    /**
-     * @var int
-     */
     private int $option_id;
-    /**
-     * @var int
-     */
     private int $option_value_id;
-    /**
-     * @var int
-     */
     private int $quantity;
-    /**
-     * @var bool
-     */
     private bool $subtract;
-    /**
-     * @var float
-     */
     private float $price;
-    /**
-     * @var NumberSignPrefixEnum
-     */
     private NumberSignPrefixEnum $price_prefix;
-    /**
-     * @var int
-     */
     private int $points;
-    /**
-     * @var NumberSignPrefixEnum
-     */
     private NumberSignPrefixEnum $points_prefix;
-    /**
-     * @var float
-     */
     private float $weight;
-    /**
-     * @var NumberSignPrefixEnum
-     */
     private NumberSignPrefixEnum $weight_prefix;
 
-    /**
-     * @param int $product_option_value_id
-     * @param int $product_option_id
-     * @param int $product_id
-     * @param int $option_id
-     * @param int $option_value_id
-     * @param int $quantity
-     * @param bool $subtract
-     * @param float $price
-     * @param NumberSignPrefixEnum $price_prefix
-     * @param int $points
-     * @param NumberSignPrefixEnum $points_prefix
-     * @param float $weight
-     * @param NumberSignPrefixEnum $weight_prefix
-     */
     public function __construct(
         int $product_option_value_id,
         int $product_option_id,
@@ -103,93 +49,54 @@ class ProductOptionValue {
         $this->weight_prefix = $weight_prefix;
     }
 
-    /**
-     * @return int
-     */
     public function getProductOptionValueId(): int {
         return $this->product_option_value_id;
     }
 
-    /**
-     * @return int
-     */
     public function getProductOptionId(): int {
         return $this->product_option_id;
     }
 
-    /**
-     * @return int
-     */
     public function getProductId(): int {
         return $this->product_id;
     }
 
-    /**
-     * @return int
-     */
     public function getOptionId(): int {
         return $this->option_id;
     }
 
-    /**
-     * @return int
-     */
     public function getOptionValueId(): int {
         return $this->option_value_id;
     }
 
-    /**
-     * @return int
-     */
     public function getQuantity(): int {
         return $this->quantity;
     }
 
-    /**
-     * @return bool
-     */
     public function isSubtract(): bool {
         return $this->subtract;
     }
 
-    /**
-     * @return float
-     */
     public function getPrice(): float {
         return $this->price;
     }
 
-    /**
-     * @return NumberSignPrefixEnum
-     */
     public function getPricePrefix(): NumberSignPrefixEnum {
         return $this->price_prefix;
     }
 
-    /**
-     * @return int
-     */
     public function getPoints(): int {
         return $this->points;
     }
 
-    /**
-     * @return NumberSignPrefixEnum
-     */
     public function getPointsPrefix(): NumberSignPrefixEnum {
         return $this->points_prefix;
     }
 
-    /**
-     * @return float
-     */
     public function getWeight(): float {
         return $this->weight;
     }
 
-    /**
-     * @return NumberSignPrefixEnum
-     */
     public function getWeightPrefix(): NumberSignPrefixEnum {
         return $this->weight_prefix;
     }

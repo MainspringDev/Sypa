@@ -6,7 +6,7 @@ namespace Sypa\Model;
 
 class OrderCollection implements \Iterator, \Countable {
     /**
-     * @var Order[]
+     * @var array<int, Order>
      */
     private array $orders = [];
 

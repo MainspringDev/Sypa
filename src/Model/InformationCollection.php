@@ -6,37 +6,37 @@ namespace Sypa\Model;
 
 class InformationCollection implements \Iterator, \Countable {
     /**
-     * @var Information[]
+     * @var array<int, Information>
      */
-    private array $informations = [];
+    private array $information = [];
 
     public function addInformation(Information $information): void {
-        $this->informations[] = $information;
+        $this->information[] = $information;
     }
 
     public function current(): ?Information {
-        $current = current($this->informations);
+        $current = current($this->information);
 
         return ($current instanceof Information ? $current : null);
     }
 
     public function next(): void {
-        next($this->informations);
+        next($this->information);
     }
 
     public function key(): ?int {
-        return key($this->informations);
+        return key($this->information);
     }
 
     public function valid(): bool {
-        return (key($this->informations) !== null);
+        return (key($this->information) !== null);
     }
 
     public function rewind(): void {
-        reset($this->informations);
+        reset($this->information);
     }
 
     public function count(): int {
-        return count($this->informations);
+        return count($this->information);
     }
 }

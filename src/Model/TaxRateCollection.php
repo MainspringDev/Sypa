@@ -4,24 +4,30 @@ declare(strict_types=1);
 
 namespace Sypa\Model;
 
+use Sypa\Exception\ResourceNotFoundException;
+
 class TaxRateCollection implements \Iterator, \Countable {
     /**
-     * @var TaxRate[]
+     * @var array<int, TaxRate>
      */
     private array $tax_rates = [];
 
     public function addTaxRate(TaxRate $taxRate): void {
-        $this->tax_rates[$taxRate->getId()] = $taxRate;
+        $this->tax_rates[$taxRate->getTaxRateId()] = $taxRate;
     }
 
     public function hasTaxRate(int $id): bool {
         return array_key_exists($id, $this->tax_rates);
     }
 
+    /**
+     * @param int $id
+     * @return TaxRate
+     * @throws ResourceNotFoundException
+     */
     public function getTaxRate(int $id): TaxRate {
         if ($this->hasTaxRate($id) === false) {
-            // @todo exception
-            throw new \Exception();
+            throw new ResourceNotFoundException();
         }
 
         return $this->tax_rates[$id];
