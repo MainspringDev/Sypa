@@ -1644,7 +1644,7 @@ trait ControllerResolverTrait {
 
     /**
      * @param string $route
-     * @return string[]
+     * @return string[]&callable
      * @throws UnresolvableControllerException
      */
     public function resolveControllerRoute(string $route): array {
@@ -1668,7 +1668,7 @@ trait ControllerResolverTrait {
 
     /**
      * @param string $route
-     * @param array[] $callable
+     * @param string[]&callable $callable
      */
     public function addControllerRoute(string $route, array $callable): void {
         $this->controllers[$route] = $callable;

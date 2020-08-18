@@ -11,7 +11,7 @@ trait ModelResolverTrait {
     /**
      * @var array
      */
-    private $models = [
+    private array $models = [
         'admin/model/catalog/attribute' => [\OpenCart\Admin\Model\Catalog\ModelCatalogAttribute::class, null],
         'admin/model/catalog/attribute/addAttribute' => [\OpenCart\Admin\Model\Catalog\ModelCatalogAttribute::class, 'addAttribute'],
         'admin/model/catalog/attribute/editAttribute' => [\OpenCart\Admin\Model\Catalog\ModelCatalogAttribute::class, 'editAttribute'],
@@ -1821,7 +1821,7 @@ trait ModelResolverTrait {
 
     /**
      * @param string $route
-     * @return string[]
+     * @return string[]&callable
      * @throws UnresolvableModelException
      */
     public function resolveModelRoute(string $route): array {
@@ -1845,7 +1845,7 @@ trait ModelResolverTrait {
 
     /**
      * @param string $route
-     * @param array[] $callable
+     * @param string[]&callable $callable
      */
     public function addModelRoute(string $route, array $callable): void {
         $this->models[$route] = $callable;

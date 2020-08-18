@@ -1677,7 +1677,7 @@ trait RouteResolverTrait {
 
     /**
      * @param string $route
-     * @return array
+     * @return string[]&callable
      * @throws UnresolvableRouteException
      */
     public function resolveRoute(string $route): array {

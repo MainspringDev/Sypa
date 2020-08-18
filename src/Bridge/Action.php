@@ -36,7 +36,7 @@ class Action {
             ));
         }
 
-        // @todo Problem: Could be an internal controller call or external route call!
+        // @todo Problem: Could be an internal controller call or external route call.
 
         list($class, $method) = $this->resolveToCallable($route);
 
