@@ -4,6 +4,7 @@
         "ext-gd": "*",
         "ext-json": "*",
         "ext-pdo": "*",
+        "ext-zlib": "*",
         "guzzlehttp/guzzle": "^6.3",
         "leafo/scssphp": "^0.7",
         "myclabs/php-enum": "^1.7",
