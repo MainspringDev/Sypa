@@ -12,6 +12,7 @@ class BannerImage {
     private string $link;
     private string $image;
     private int $sort_order;
+    private bool $status;
 
     public function __construct(
         int $banner_image_id,
@@ -20,7 +21,8 @@ class BannerImage {
         string $title,
         string $link,
         string $image,
-        int $sort_order
+        int $sort_order,
+        bool $status
     ) {
         $this->banner_image_id = $banner_image_id;
         $this->banner_id = $banner_id;
@@ -29,6 +31,7 @@ class BannerImage {
         $this->link = $link;
         $this->image = $image;
         $this->sort_order = $sort_order;
+        $this->status = $status;
     }
 
     public function getBannerImageId(): int {
@@ -57,5 +60,9 @@ class BannerImage {
 
     public function getSortOrder(): int {
         return $this->sort_order;
+    }
+
+    public function isStatus(): bool {
+        return $this->status;
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sypa\Model;
+namespace Sypa\Model\Report;
 
 class Statistics {
     private int $statistics_id;
