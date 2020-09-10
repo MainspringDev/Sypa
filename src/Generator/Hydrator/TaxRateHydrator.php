@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Sypa\Generator\Hydrator;
 
 use Sypa\Generator\Factory\DateTimeFactory;
-use Sypa\Model\TaxRate;
+use Sypa\Model\Sale\TaxRate;
 
 class TaxRateHydrator {
     const REQUIRED_DATA = [
@@ -45,22 +45,24 @@ class TaxRateHydrator {
 
         return new TaxRate(
             $tax_rate_id,
+            $geo_zone_id,
             $name,
             $rate,
             $type,
-            $priority
+            $this->dateTimeFactory->makeDateTimeImmutable($date_added),
+            $this->dateTimeFactory->makeDateTimeImmutable($date_modified)
         );
     }
 
     public function extract(TaxRate $taxRate): array {
         return [
-            'tax_rate_id',
-            'geo_zone_id',
-            'name',
-            'rate',
-            'type',
-            'date_added',
-            'date_modified'
+            'tax_rate_id'   => $taxRate->getTaxRateId(),
+            'geo_zone_id'   => $taxRate->getGeoZoneId(),
+            'name'          => $taxRate->getName(),
+            'rate'          => $taxRate->getRate(),
+            'type'          => $taxRate->getType(),
+            'date_added'    => $taxRate->getDateAdded(),
+            'date_modified' => $taxRate->getDateModified()
         ];
     }
 }

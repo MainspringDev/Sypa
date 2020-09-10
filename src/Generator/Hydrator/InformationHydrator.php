@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sypa\Generator\Hydrator;
 
 use Sypa\Generator\Factory\DateTimeFactory;
-use Sypa\Model\Information;
+use Sypa\Model\Information\Information;
 
 class InformationHydrator {
     const REQUIRED_DATA = [

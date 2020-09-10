@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Sypa\Generator\Hydrator;
 
 use Sypa\Generator\Factory\DateTimeFactory;
-use Sypa\Model\Review;
+use Sypa\Model\Catalog\Review;
 
 class ReviewHydrator {
     const REQUIRED_DATA = [

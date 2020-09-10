@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Sypa\Generator\Hydrator;
 
-use Sypa\Model\Address;
-use Sypa\Model\AddressClassificationEnum;
-use Sypa\Model\AddressValidationEnum;
+use Sypa\Model\Account\Address;
+use Sypa\Model\Account\AddressClassificationEnum;
+use Sypa\Model\Account\AddressValidationEnum;
 
 class AddressHydrator {
     const REQUIRED_DATA = [

@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sypa\Generator\Hydrator;
 
 use Sypa\Generator\Factory\DateTimeFactory;
-use Sypa\Model\ProductDiscount;
+use Sypa\Model\Catalog\ProductDiscount;
 
 class ProductDiscountHydrator {
     const REQUIRED_DATA = [

@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sypa\Generator\Hydrator;
 
-use Sypa\Model\Extension;
+use Sypa\Model\Setting\Extension;
 use Sypa\Exception\MalformedResourceException;
 
 class ExtensionHydrator {

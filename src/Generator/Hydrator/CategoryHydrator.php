@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sypa\Generator\Hydrator;
 
 use Sypa\Exception\MalformedResourceException;
 use Sypa\Generator\Factory\DateTimeFactory;
-use Sypa\Model\Category;
+use Sypa\Model\Catalog\Category;
 
 class CategoryHydrator {
     const REQUIRED_DATA = [

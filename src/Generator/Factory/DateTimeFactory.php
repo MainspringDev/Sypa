@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sypa\Generator\Factory;
 
 class DateTimeFactory {

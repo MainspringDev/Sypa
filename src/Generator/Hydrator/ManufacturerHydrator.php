@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Sypa\Generator\Hydrator;
 
 use Sypa\Generator\Factory\DateTimeFactory;
-use Sypa\Model\Manufacturer;
+use Sypa\Model\Catalog\Manufacturer;
 
 class ManufacturerHydrator {
     const REQUIRED_DATA = [

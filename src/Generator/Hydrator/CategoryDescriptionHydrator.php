@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Sypa\Generator\Hydrator;
 
-use Sypa\Model\CategoryDescription;
+use Sypa\Model\Catalog\CategoryDescription;
 
 class CategoryDescriptionHydrator {
     const REQUIRED_DATA = [

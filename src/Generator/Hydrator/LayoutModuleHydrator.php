@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sypa\Generator\Hydrator;
 
-use Sypa\Model\LayoutModule;
+use Sypa\Model\Design\LayoutModule;
 
 class LayoutModuleHydrator {
     const REQUIRED_DATA = [
